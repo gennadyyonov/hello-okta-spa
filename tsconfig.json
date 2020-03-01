@@ -1,12 +1,27 @@
 {
   "compilerOptions": {
+    "baseUrl": "src",
+    "outDir": "build/dist",
     "target": "es5",
     "lib": [
+      "es6",
+      "es2017",
       "dom",
       "dom.iterable",
       "esnext"
     ],
+    "sourceMap": true,
     "allowJs": true,
+    "rootDir": "src",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": false,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -20,6 +35,11 @@
     "jsx": "react"
   },
   "include": [
-    "src"
+    "**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "src/setupTests.ts"
   ]
 }
