@@ -1,6 +1,16 @@
+import {ActionTypes} from '../constants/actionTypes';
+
+export interface Action<T> {
+  type: ActionTypes;
+  payload: T;
+}
+
+export interface SecurityConfigAction extends Action<SecurityConfigProps> {
+}
+
 export interface SecurityConfigProps {
-  oktaClientId: string;
-  oktaIssuer: string;
+  oktaClientId?: string;
+  oktaIssuer?: string;
 }
 
 export interface HomeProps {
@@ -13,10 +23,22 @@ export interface AppState extends HomeProps {
 
 export const defaultState: AppState = {
   message: 'Hello, World!',
-  securityConfig: {
-    oktaClientId: '0oa26efk122CnG3k3357',
-    oktaIssuer: 'https://dev-220281.okta.com/oauth2/aus26efk9hrb1yASy357'
+  securityConfig: {}
+};
+
+export const securityConfigReducer = (state: AppState = defaultState, action: SecurityConfigAction): AppState => {
+  switch (action.type) {
+    case ActionTypes.SET_ENVIRONMENT_CONFIG_ACTION:
+      const securityConfigProps = action.payload;
+      return {
+        ...state,
+        securityConfig: {
+          oktaClientId: securityConfigProps.oktaClientId,
+          oktaIssuer: securityConfigProps.oktaIssuer
+        }
+      };
+    default:
+      return state;
   }
 };
 
-export const rootReducer = (state: AppState = defaultState) => state;
