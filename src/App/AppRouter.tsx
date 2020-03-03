@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {HomeConnected} from '../components/Home/HomeConnected';
 import {AppRouterProps} from './AppRouterConnected';
 
-export const AppRouter = (props: AppRouterProps) => {
+export const AppRouter: React.FC<AppRouterProps> = (props) => {
   const oktaConfig = {
     issuer: props.oktaIssuer,
     redirectUri: window.location.origin + '/implicit/callback',
