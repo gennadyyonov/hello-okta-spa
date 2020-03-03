@@ -6,10 +6,10 @@ import {compose} from 'redux';
 interface MapStateToProps extends HomeProps {
 }
 
+const mapStateToProps = ({message}): MapStateToProps => ({message});
+
+const mergeProps = ({message}: MapStateToProps): HomeProps => ({message});
+
 export const HomeConnected = compose(
-  connect<MapStateToProps, {}, {}, HomeProps, AppState>(
-    ({message}): MapStateToProps => ({message}),
-    null,
-    ({message}): HomeProps => ({message})
-  )
+  connect<MapStateToProps, {}, {}, HomeProps, AppState>(mapStateToProps, null, mergeProps)
 )(Home);

@@ -9,18 +9,18 @@ interface MapStateToProps extends Pick<SecurityConfigProps, 'oktaClientId' | 'ok
 export interface AppRouterProps extends SecurityConfigProps {
 }
 
+const mapStateToProps = (state) => {
+  const {
+    securityConfig: {
+      oktaClientId,
+      oktaIssuer
+    }
+  } = state;
+  return {oktaClientId, oktaIssuer};
+};
+
+const mergeProps = ({oktaClientId, oktaIssuer}: MapStateToProps): AppRouterProps => ({oktaClientId, oktaIssuer});
+
 export const AppRouterConnected = compose(
-  connect<MapStateToProps, {}, {}, AppRouterProps, AppState>(
-    (state) => {
-      const {
-        securityConfig: {
-          oktaClientId,
-          oktaIssuer
-        }
-      } = state;
-      return {oktaClientId, oktaIssuer};
-    },
-    null,
-    ({oktaClientId, oktaIssuer}): AppRouterProps => ({oktaClientId, oktaIssuer})
-  )
+  connect<MapStateToProps, {}, {}, AppRouterProps, AppState>(mapStateToProps, null, mergeProps)
 )(AppRouter);

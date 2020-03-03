@@ -1,0 +1,22 @@
+type Query {
+    ping: String
+    me: UserInfo
+    hello(authType: AuthType): Message
+}
+
+type UserInfo {
+    userId: ID,
+    firstName: String,
+    lastName: String,
+    email: String,
+    roles: [String]
+}
+
+enum AuthType {
+    USER
+    CLIENT
+}
+
+type Message {
+    text: String
+}
