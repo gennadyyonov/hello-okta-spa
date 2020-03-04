@@ -1,4 +1,4 @@
-import {Home} from 'components/Home/Home';
+import Home from 'components/Home/Home';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
 import {pingThunk} from '../../actions/pingThunk';

@@ -1,16 +1,41 @@
 import React from 'react';
-import logo from '../../logo.svg';
 import {HomeProps} from './HomeConnected';
+import Alert from '@material-ui/lab/Alert';
+import Button from '@material-ui/core/Button';
+import {AppHeader} from '../AppHeader/AppHeader';
+import Paper from '@material-ui/core/Paper';
+import {WithStyles, withStyles} from '@material-ui/core/styles';
+import {Box} from '@material-ui/core';
 
-export const Home: React.FC<HomeProps> = (props) => {
-  const { message, onPing } = props;
+const styles = {
+  root: {
+    margin: 20,
+    padding: 20,
+    width: 400,
+    height: 400
+  }
+};
+
+const Home: React.FC<HomeProps & WithStyles> = (props) => {
+  const {message, onPing, classes} = props;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{message}</p>
-        <button type="submit" onClick={onPing}>Ping</button>
-      </header>
-    </div>
+    <Paper className={classes.root} elevation={3}>
+      <AppHeader/>
+      <Box>
+        <Box pt={4}>
+          <Alert severity="info">{message}</Alert>
+        </Box>
+        <Box pt={2}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={onPing}>
+            Ping
+          </Button>
+        </Box>
+      </Box>
+    </Paper>
   )
 };
+
+export default withStyles(styles)(Home);
