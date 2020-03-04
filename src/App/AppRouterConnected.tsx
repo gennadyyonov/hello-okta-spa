@@ -1,12 +1,14 @@
 import {connect} from 'react-redux';
 import {compose} from 'redux';
-import {AppState, SecurityConfigProps} from '../reducers';
+import {AppState, SecurityConfigState} from '../reducers';
 import {AppRouter} from './AppRouter';
 
-interface MapStateToProps extends Pick<SecurityConfigProps, 'oktaClientId' | 'oktaIssuer'> {
+interface MapStateToProps extends Pick<SecurityConfigState, 'oktaClientId' | 'oktaIssuer'> {
 }
 
-export interface AppRouterProps extends SecurityConfigProps {
+export interface AppRouterProps {
+  oktaClientId?: string;
+  oktaIssuer?: string;
 }
 
 const mapStateToProps = (state) => {

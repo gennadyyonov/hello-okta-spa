@@ -5,40 +5,37 @@ export interface Action<T> {
   payload: T;
 }
 
-export interface SecurityConfigAction extends Action<SecurityConfigProps> {
+export interface SecurityConfigAction extends Action<SecurityConfigState> {
 }
 
 export interface PingAction extends Action<string> {
 }
 
-export interface UserInfoAction extends Action<UserInfoProps> {
+export interface UserInfoAction extends Action<UserInfoState> {
 }
 
-export interface MessageAction extends Action<MessageProps> {
+export interface MessageAction extends Action<MessageState> {
 }
 
-export interface SecurityConfigProps {
+export interface SecurityConfigState {
   oktaClientId?: string;
   oktaIssuer?: string;
 }
 
-export interface UserInfoProps {
+export interface UserInfoState {
   userId?: string;
   firstName?: string;
   lastName?: string;
 }
 
-export interface MessageProps {
+export interface MessageState {
   text?: string;
 }
 
-interface HomeProps {
+export interface AppState {
   message: string;
-}
-
-export interface AppState extends HomeProps {
-  securityConfig: SecurityConfigProps;
-  userInfo: UserInfoProps;
+  securityConfig: SecurityConfigState;
+  userInfo: UserInfoState;
 }
 
 export const defaultState: AppState = {
@@ -96,13 +93,13 @@ const helloReducer = (state: AppState = defaultState, action: MessageAction): Ap
     return {
       ...state,
       message: text
-      }
+    }
   } else {
     return state;
   }
 };
 
-export const rootReducer = (state: AppState = defaultState, action) : AppState => {
+export const rootReducer = (state: AppState = defaultState, action): AppState => {
   const reducers = [securityConfigReducer, userInfoReducer, helloReducer, pingReducer];
   let finalState = state;
   let i;

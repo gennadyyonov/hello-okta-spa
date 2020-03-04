@@ -1,12 +1,15 @@
 import {connect} from 'react-redux';
 import {compose} from 'redux';
+import {AppState, UserInfoState} from '../../reducers';
 import {ProfileItem} from './ProfileItem';
-import {AppState, UserInfoProps} from '../../reducers';
 
-interface MapStateToProps extends Pick<UserInfoProps, 'userId' | 'firstName' | 'lastName'> {
+interface MapStateToProps extends Pick<UserInfoState, 'userId' | 'firstName' | 'lastName'> {
 }
 
-export interface ProfileItemProps extends UserInfoProps {
+export interface ProfileItemProps {
+  userId?: string;
+  firstName?: string;
+  lastName?: string;
 }
 
 const mapStateToProps = (state) => {
@@ -20,7 +23,11 @@ const mapStateToProps = (state) => {
   return {userId, firstName, lastName};
 };
 
-const mergeProps = ({userId, firstName, lastName}: MapStateToProps): ProfileItemProps => ({userId, firstName, lastName});
+const mergeProps = ({userId, firstName, lastName}: MapStateToProps): ProfileItemProps => ({
+  userId,
+  firstName,
+  lastName
+});
 
 export const ProfileItemConnected = compose(
   connect<MapStateToProps, {}, {}, ProfileItemProps, AppState>(mapStateToProps, null, mergeProps)
