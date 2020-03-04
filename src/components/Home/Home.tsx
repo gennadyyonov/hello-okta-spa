@@ -1,11 +1,14 @@
-import React from 'react';
-import {HomeProps} from './HomeConnected';
-import Alert from '@material-ui/lab/Alert';
+import {Box} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
-import {AppHeader} from '../AppHeader/AppHeader';
 import Paper from '@material-ui/core/Paper';
 import {WithStyles, withStyles} from '@material-ui/core/styles';
-import {Box} from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
+import React, {useEffect} from 'react';
+import {useDispatch} from 'react-redux';
+import {helloThunk} from '../../actions/helloThunk';
+import {AuthType} from '../../graphql/queries/hello';
+import {AppHeader} from '../AppHeader/AppHeader';
+import {HomeProps} from './HomeConnected';
 
 const styles = {
   root: {
@@ -17,6 +20,14 @@ const styles = {
 };
 
 const Home: React.FC<HomeProps & WithStyles> = (props) => {
+  const dispatch = useDispatch();
+  useEffect(
+    () => {
+      dispatch(helloThunk(AuthType.USER));
+    },
+    // eslint-disable-next-line
+    [],
+  );
   const {message, onPing, classes} = props;
   return (
     <Paper className={classes.root} elevation={3}>

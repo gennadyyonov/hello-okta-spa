@@ -7,3 +7,8 @@ export const hello = gql`
       }
   }
 `;
+
+export enum AuthType {
+  USER = 'USER',
+  CLIENT = 'CLIENT'
+}

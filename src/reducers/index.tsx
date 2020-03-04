@@ -14,15 +14,22 @@ export interface PingAction extends Action<string> {
 export interface UserInfoAction extends Action<UserInfoProps> {
 }
 
+export interface MessageAction extends Action<MessageProps> {
+}
+
 export interface SecurityConfigProps {
   oktaClientId?: string;
   oktaIssuer?: string;
 }
 
 export interface UserInfoProps {
-  userId?;
+  userId?: string;
   firstName?: string;
   lastName?: string;
+}
+
+export interface MessageProps {
+  text?: string;
 }
 
 interface HomeProps {
@@ -82,8 +89,21 @@ const userInfoReducer = (state: AppState = defaultState, action: UserInfoAction)
   }
 };
 
+const helloReducer = (state: AppState = defaultState, action: MessageAction): AppState => {
+  if (action.type === ActionTypes.HELLO_ACTION) {
+    const message = action.payload;
+    const text = message.text ? message.text : state.message;
+    return {
+      ...state,
+      message: text
+      }
+  } else {
+    return state;
+  }
+};
+
 export const rootReducer = (state: AppState = defaultState, action) : AppState => {
-  const reducers = [securityConfigReducer, userInfoReducer, pingReducer];
+  const reducers = [securityConfigReducer, userInfoReducer, helloReducer, pingReducer];
   let finalState = state;
   let i;
   for (i = 0; i < reducers.length; i++) {
