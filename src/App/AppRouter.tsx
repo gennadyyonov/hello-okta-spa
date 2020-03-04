@@ -1,4 +1,4 @@
-import {ImplicitCallback, SecureRoute, Security} from '@okta/okta-react';
+import {LoginCallback, SecureRoute, Security} from '@okta/okta-react';
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {HomeConnected} from '../components/Home/HomeConnected';
@@ -18,7 +18,7 @@ export const AppRouter: React.FC<AppRouterProps> = (props) => {
       <Security {...oktaConfig}>
         <Switch>
           <SecureRoute exact path="/" component={HomeConnected}/>
-          <Route path='/implicit/callback' component={ImplicitCallback}/>
+          <Route path='/implicit/callback' component={LoginCallback}/>
         </Switch>
       </Security>
     </Router>
