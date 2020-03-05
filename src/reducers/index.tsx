@@ -5,9 +5,6 @@ export interface Action<T> {
   payload: T;
 }
 
-export interface SecurityConfigAction extends Action<SecurityConfigState> {
-}
-
 export interface PingAction extends Action<string> {
 }
 
@@ -15,11 +12,6 @@ export interface UserInfoAction extends Action<UserInfoState> {
 }
 
 export interface MessageAction extends Action<MessageState> {
-}
-
-export interface SecurityConfigState {
-  oktaClientId?: string;
-  oktaIssuer?: string;
 }
 
 export interface UserInfoState {
@@ -34,29 +26,12 @@ export interface MessageState {
 
 export interface AppState {
   message: string;
-  securityConfig: SecurityConfigState;
   userInfo: UserInfoState;
 }
 
 export const defaultState: AppState = {
   message: 'Loading...',
-  securityConfig: {},
   userInfo: {}
-};
-
-const securityConfigReducer = (state: AppState = defaultState, action: SecurityConfigAction): AppState => {
-  if (action.type === ActionTypes.SET_ENVIRONMENT_CONFIG_ACTION) {
-    const securityConfigProps = action.payload;
-    return {
-      ...state,
-      securityConfig: {
-        oktaClientId: securityConfigProps.oktaClientId,
-        oktaIssuer: securityConfigProps.oktaIssuer
-      }
-    };
-  } else {
-    return state;
-  }
 };
 
 const pingReducer = (state: AppState = defaultState, action: PingAction): AppState => {
@@ -100,7 +75,7 @@ const helloReducer = (state: AppState = defaultState, action: MessageAction): Ap
 };
 
 export const rootReducer = (state: AppState = defaultState, action): AppState => {
-  const reducers = [securityConfigReducer, userInfoReducer, helloReducer, pingReducer];
+  const reducers = [userInfoReducer, helloReducer, pingReducer];
   let finalState = state;
   let i;
   for (i = 0; i < reducers.length; i++) {
