@@ -9,6 +9,7 @@ import {helloThunk} from '../../actions/helloThunk';
 import {AuthType} from '../../graphql/queries/hello';
 import {AppHeader} from '../AppHeader/AppHeader';
 import {HomeProps} from './HomeConnected';
+import {i18n} from '../../i18n/i18n';
 
 const styles = {
   root: {
@@ -41,7 +42,7 @@ const Home: React.FC<HomeProps & WithStyles> = (props) => {
             variant="contained"
             color="primary"
             onClick={onPing}>
-            Ping
+            {i18n('home_button_ping')}
           </Button>
         </Box>
       </Box>

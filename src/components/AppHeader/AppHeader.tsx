@@ -4,9 +4,17 @@ import Toolbar from '@material-ui/core/Toolbar';
 import {useDispatch} from 'react-redux';
 import {meThunk} from '../../actions/meThunk';
 import {ProfileItemConnected} from './ProfileItemConnected';
+import {translationMapThunk} from '../../actions/translationMapThunk';
 
 export const AppHeader: React.FC = () => {
   const dispatch = useDispatch();
+  useEffect(
+    () => {
+      dispatch(translationMapThunk());
+    },
+    // eslint-disable-next-line
+    [],
+  );
   useEffect(
     () => {
       dispatch(meThunk());

@@ -2,6 +2,7 @@ type Query {
     ping: String
     me: UserInfo
     hello(authType: AuthType): Message
+    translationMap: TranslationMap
 }
 
 type UserInfo {
@@ -19,4 +20,13 @@ enum AuthType {
 
 type Message {
     text: String
+}
+
+type TranslationMap {
+    entries: [TranslationMapEntry]
+}
+
+type TranslationMapEntry {
+    key: String
+    values: [String]
 }
