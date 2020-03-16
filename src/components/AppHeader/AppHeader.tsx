@@ -3,14 +3,17 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import {useDispatch} from 'react-redux';
 import {meThunk} from '../../actions/meThunk';
+import {AppHeaderProps} from './AppHeaderConnected';
 import {ProfileItemConnected} from './ProfileItemConnected';
 import {translationMapThunk} from '../../actions/translationMapThunk';
 
-export const AppHeader: React.FC = () => {
+export const AppHeader: React.FC<AppHeaderProps> = (props) => {
   const dispatch = useDispatch();
   useEffect(
     () => {
-      dispatch(translationMapThunk());
+      if (!props.translationsInitialized) {
+        dispatch(translationMapThunk());
+      }
     },
     // eslint-disable-next-line
     [],

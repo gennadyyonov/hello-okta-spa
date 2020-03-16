@@ -23,6 +23,7 @@ type Message {
 }
 
 type TranslationMap {
+    locale: String
     entries: [TranslationMapEntry]
 }
 

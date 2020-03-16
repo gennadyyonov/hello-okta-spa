@@ -1,17 +1,26 @@
-import {store} from '../App/store';
-import {Langs} from '../reducers';
+import * as React from 'react';
+import {injectIntl, IntlShape} from 'react-intl';
 
-export const i18n = (key: string, ...replacements: string[]): string => {
-  const langs = store.getState().translation.entries;
-  return translate(langs, key, ...replacements);
-};
+interface I18NProps {
+  intl: IntlShape;
+}
 
-export const translate = (langs: Langs, key: string, ...replacements: string[]) => {
-  let  value = langs[key] ? langs[key] : key;
-  if (replacements.length) {
-    let i = 0;
-    const replaceFn = () => replacements[i++];
-    value = value.replace(/{(.*?)}/gim, replaceFn);
+class I18N extends React.Component<I18NProps, any, any> {
+  static instance: I18N | null = null;
+
+  componentWillMount() {
+    if (!I18N.instance) {
+      I18N.instance = this;
+    }
   }
-  return value;
-};
+
+  render() {
+    return null;
+  }
+}
+
+export default injectIntl(I18N);
+
+export function i18n(id, values?) {
+  return I18N.instance ? I18N.instance.props.intl.formatMessage({id: id}, values) : id;
+}

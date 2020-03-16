@@ -28,6 +28,7 @@ export interface MessageState {
 }
 
 interface TranslationMap {
+  locale: string;
   entries: TranslationMapEntry[]
 }
 
@@ -41,7 +42,9 @@ export interface Langs {
 }
 
 export interface TranslationState {
+  locale: string;
   entries: Langs;
+  initialized: boolean;
 }
 
 export interface AppState {
@@ -54,7 +57,9 @@ export const defaultState: AppState = {
   message: 'Loading...',
   userInfo: {},
   translation: {
-    entries: {}
+    locale: 'en',
+    entries: {},
+    initialized: false
   }
 };
 
@@ -108,7 +113,9 @@ const translationReducer = (state: AppState = defaultState, action: TranslationA
     return {
       ...state,
       translation: {
-        entries: entries
+        locale: translationMap.locale,
+        entries: entries,
+        initialized: true
       }
     };
   } else {
