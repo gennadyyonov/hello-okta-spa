@@ -33,11 +33,11 @@ interface TranslationMap {
 
 interface TranslationMapEntry {
   key: string
-  values: string[]
+  value: string
 }
 
 export interface Langs {
-  [key: string]: string[];
+  [key: string]: string;
 }
 
 export interface TranslationState {
@@ -102,8 +102,8 @@ const translationReducer = (state: AppState = defaultState, action: TranslationA
   if (action.type === ActionTypes.TRANSLATION_MAP_ACTION) {
     const translationMap = action.payload;
     const entries = {};
-    translationMap.entries.forEach(({ key, values }): void => {
-      entries[key] = values;
+    translationMap.entries.forEach(({ key, value }): void => {
+      entries[key] = value;
     });
     return {
       ...state,

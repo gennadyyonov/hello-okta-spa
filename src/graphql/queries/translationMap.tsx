@@ -5,7 +5,7 @@ export const translationMap = gql`
         translationMap {
             entries {
                 key
-                values
+                value
             }
         }
     }
