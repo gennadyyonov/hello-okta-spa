@@ -14,9 +14,6 @@ export interface UserInfoAction extends Action<UserInfoState> {
 export interface MessageAction extends Action<MessageState> {
 }
 
-export interface TranslationAction extends Action<TranslationMap> {
-}
-
 export interface UserInfoState {
   userId?: string;
   firstName?: string;
@@ -27,40 +24,14 @@ export interface MessageState {
   text?: string;
 }
 
-interface TranslationMap {
-  locale: string;
-  entries: TranslationMapEntry[]
-}
-
-interface TranslationMapEntry {
-  key: string
-  value: string
-}
-
-export interface Langs {
-  [key: string]: string;
-}
-
-export interface TranslationState {
-  locale: string;
-  entries: Langs;
-  initialized: boolean;
-}
-
 export interface AppState {
   message: string;
   userInfo: UserInfoState;
-  translation: TranslationState;
 }
 
 export const defaultState: AppState = {
   message: 'Loading...',
-  userInfo: {},
-  translation: {
-    locale: 'en',
-    entries: {},
-    initialized: false
-  }
+  userInfo: {}
 };
 
 const pingReducer = (state: AppState = defaultState, action: PingAction): AppState => {
@@ -103,28 +74,8 @@ const helloReducer = (state: AppState = defaultState, action: MessageAction): Ap
   }
 };
 
-const translationReducer = (state: AppState = defaultState, action: TranslationAction): AppState => {
-  if (action.type === ActionTypes.TRANSLATION_MAP_ACTION) {
-    const translationMap = action.payload;
-    const entries = {};
-    translationMap.entries.forEach(({ key, value }): void => {
-      entries[key] = value;
-    });
-    return {
-      ...state,
-      translation: {
-        locale: translationMap.locale,
-        entries: entries,
-        initialized: true
-      }
-    };
-  } else {
-    return state;
-  }
-};
-
 export const rootReducer = (state: AppState = defaultState, action): AppState => {
-  const reducers = [userInfoReducer, helloReducer, pingReducer, translationReducer];
+  const reducers = [userInfoReducer, helloReducer, pingReducer];
   let finalState = state;
   let i;
   for (i = 0; i < reducers.length; i++) {

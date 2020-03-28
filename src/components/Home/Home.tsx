@@ -8,7 +8,7 @@ import {useDispatch} from 'react-redux';
 import {helloThunk} from '../../actions/helloThunk';
 import {AuthType} from '../../graphql/queries/hello';
 import {i18n} from '../../i18n/i18n';
-import {AppHeaderConnected} from '../AppHeader/AppHeaderConnected';
+import {AppHeader} from '../AppHeader/AppHeader';
 import {HomeProps} from './HomeConnected';
 
 const styles = {
@@ -32,7 +32,7 @@ const Home: React.FC<HomeProps & WithStyles> = (props) => {
   const {message, onPing, classes} = props;
   return (
     <Paper className={classes.root} elevation={3}>
-      <AppHeaderConnected/>
+      <AppHeader/>
       <Box>
         <Box pt={4}>
           <Alert severity="info">{message}</Alert>

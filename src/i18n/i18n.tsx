@@ -1,26 +1,28 @@
-import * as React from 'react';
-import {injectIntl, IntlShape} from 'react-intl';
-
-interface I18NProps {
-  intl: IntlShape;
+export type Translations = {
+  [key: string]: string;
 }
 
-class I18N extends React.Component<I18NProps, any, any> {
-  static instance: I18N | null = null;
+interface TranslationSingleton {
+  entries: Translations;
+  initialized: boolean;
+  init(translations: Translations): void;
+}
 
-  componentWillMount() {
-    if (!I18N.instance) {
-      I18N.instance = this;
-    }
+export const translationSingleton: TranslationSingleton = {
+  entries: {},
+  initialized: false,
+  init(translations: Translations) {
+    this.entries = translations;
+    this.initialized = true;
   }
+};
 
-  render() {
-    return null;
+export const i18n = (key: string, ...replacements: string[]): string => {
+  let value = translationSingleton.entries[key];
+  if (replacements.length) {
+    let i = 0;
+    const replaceFn = () => replacements[i++];
+    value = value.replace(/{(.*?)}/gim, replaceFn);
   }
-}
-
-export default injectIntl(I18N);
-
-export function i18n(id, values?) {
-  return I18N.instance ? I18N.instance.props.intl.formatMessage({id: id}, values) : id;
-}
+  return value;
+};
