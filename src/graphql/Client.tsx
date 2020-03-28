@@ -2,7 +2,7 @@ import {ApolloClient} from 'apollo-client';
 import {HttpLink} from 'apollo-link-http';
 import {ApolloLink, concat} from 'apollo-link';
 import {InMemoryCache} from 'apollo-cache-inmemory';
-import {getAccessToken} from '../App/environmentConfig';
+import {getAccessToken} from 'helpers/environmentConfig';
 
 const backendGQLUri = process.env.NODE_ENV === 'production' ? '/bff/graphql' : process.env.REACT_APP_BFF;
 

@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {App} from './App/App';
-import {initEnvironment} from './App/environmentConfig';
+import {initEnvironment} from 'helpers/environmentConfig';
+import {ShadowAppLoader} from 'App/ShadowAppLoader';
 import * as serviceWorker from './serviceWorker';
 
 const root = document.getElementById('root');
 
-const initCallback = () => ReactDOM.render(<App />, root);
+ReactDOM.render(<ShadowAppLoader />, root);
 
-initEnvironment(initCallback);
+(async () => {
+  await initEnvironment();
+
+  import('./App/App').then(({ App }) => ReactDOM.render(<App />, root));
+})();
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

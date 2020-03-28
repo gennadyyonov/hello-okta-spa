@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {HomeConnected} from '../components/Home/HomeConnected';
 import I18N from '../i18n/i18n';
 import {AppContainerProps} from './AppContainerConnected';
-import {environmentConfig} from './environmentConfig';
+import {environmentConfig} from 'helpers/environmentConfig';
 
 const cache = createIntlCache();
 

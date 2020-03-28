@@ -1,5 +1,5 @@
 import { AuthService } from '@okta/okta-react';
-import {fetchEnvironmentConfig} from '../helpers/fetchEnvironmentConfig';
+import {fetchEnvironmentConfig} from 'helpers/fetchEnvironmentConfig';
 
 export interface AccessToken {
   tokenType: string;
@@ -12,7 +12,7 @@ interface EnvironmentConfig {
 
 export const environmentConfig: EnvironmentConfig = {};
 
-export const initEnvironment = async (callback) => {
+export const initEnvironment = async () => {
   const {oktaClientId, oktaIssuer} = await fetchEnvironmentConfig();
   environmentConfig.authService = new AuthService({
     issuer: oktaIssuer,
@@ -21,7 +21,6 @@ export const initEnvironment = async (callback) => {
     scope: ['email', 'profile', 'openid'],
     responseType: 'token',
   });
-  callback();
 };
 
 export const getAccessToken = (): AccessToken | null => {
