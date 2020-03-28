@@ -7,6 +7,7 @@ import React, {useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import {helloThunk} from '../../actions/helloThunk';
 import {AuthType} from '../../graphql/queries/hello';
+import {i18n} from '../../i18n/i18n';
 import {AppHeader} from '../AppHeader/AppHeader';
 import {HomeProps} from './HomeConnected';
 
@@ -41,7 +42,7 @@ const Home: React.FC<HomeProps & WithStyles> = (props) => {
             variant="contained"
             color="primary"
             onClick={onPing}>
-            Ping
+            {i18n('home_button_ping')}
           </Button>
         </Box>
       </Box>
