@@ -6,11 +6,15 @@ export interface AccessToken {
   accessToken: string;
 }
 
-export let authService: AuthService;
+interface EnvironmentConfig {
+  authService?: AuthService;
+}
 
-export const initAuth = async (callback) => {
+export const environmentConfig: EnvironmentConfig = {};
+
+export const initEnvironment = async (callback) => {
   const {oktaClientId, oktaIssuer} = await fetchEnvironmentConfig();
-  authService = new AuthService({
+  environmentConfig.authService = new AuthService({
     issuer: oktaIssuer,
     redirectUri: window.location.origin + '/implicit/callback',
     clientId: oktaClientId,
@@ -21,9 +25,9 @@ export const initAuth = async (callback) => {
 };
 
 export const getAccessToken = (): AccessToken | null => {
-  if (!authService) {
+  if (!environmentConfig.authService) {
     return null;
   }
-  const authState = authService.getAuthState();
+  const authState = environmentConfig.authService.getAuthState();
   return authState ? {tokenType: 'Bearer', accessToken: authState.accessToken} : null;
 };

@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {HomeConnected} from '../components/Home/HomeConnected';
 import I18N from '../i18n/i18n';
 import {AppContainerProps} from './AppContainerConnected';
-import {authService} from './auth';
+import {environmentConfig} from './environmentConfig';
 
 const cache = createIntlCache();
 
@@ -14,7 +14,7 @@ export const AppContainer: React.FC<AppContainerProps> = (props) => {
   const intl = createIntl({ locale: locale, messages: messages }, cache);
   return (
     <Router>
-      <Security authService={authService}>
+      <Security authService={environmentConfig.authService}>
         <IntlProvider value={intl}>
           <I18N/>
           <Switch>
