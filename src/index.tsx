@@ -1,3 +1,4 @@
+import {CircularProgress} from '@material-ui/core';
 import {initEnvironment} from 'helpers/environmentConfig';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -6,9 +7,13 @@ import * as serviceWorker from './serviceWorker';
 
 const root = document.getElementById('root');
 
-const initCallback = () => ReactDOM.render(<App />, root);
+ReactDOM.render(<CircularProgress/>, root);
 
-initEnvironment(initCallback);
+(async () => {
+  await initEnvironment();
+
+  ReactDOM.render(<App/>, root);
+})();
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
