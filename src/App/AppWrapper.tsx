@@ -1,6 +1,6 @@
 import {WithStyles, withStyles} from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
-import React from 'react';
+import React, {ReactNode} from 'react';
 
 const styles = {
   root: {
@@ -11,16 +11,10 @@ const styles = {
   }
 };
 
-interface AppWrapperProps extends WithStyles {
-  children?: React.ReactNode;
-}
-
-const AppWrapper: React.FC<AppWrapperProps> = ({ children, classes }) => (
-  (
-    <Paper className={classes.root} elevation={3}>
-      {children}
-    </Paper>
-  )
+const AppWrapper: React.FC<{ children?: ReactNode } & WithStyles> = ({ children, classes }) => (
+  <Paper className={classes.root} elevation={3}>
+    {children}
+  </Paper>
 );
 
 export default withStyles(styles)(AppWrapper)
