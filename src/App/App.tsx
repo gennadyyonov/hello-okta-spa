@@ -1,18 +1,44 @@
+import {LoginCallback, SecureRoute, Security} from '@okta/okta-react';
+import {environmentConfig} from 'helpers/environmentConfig';
 import React from 'react';
 import {Provider} from 'react-redux';
-import {fetchTranslations} from '../helpers/fetchTranslations';
-import {store} from './store';
-import {environmentConfig} from 'helpers/environmentConfig';
-import {HomeConnected} from '../components/Home/HomeConnected';
-import {LoginCallback, SecureRoute, Security} from '@okta/okta-react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {AppHeader} from '../components/AppHeader/AppHeader';
+import {HomeConnected} from '../components/Home/HomeConnected';
+import {fetchTranslations} from '../helpers/fetchTranslations';
+import AppWrapper from './AppWrapper';
+import {store} from './store';
+
+interface TranslationState {
+  initialized: boolean;
+}
 
 const withTranslations = Component =>
-  class WithTranslations extends React.Component {
+  class extends React.PureComponent<{}, TranslationState> {
+
+    state: TranslationState = {
+      initialized: false
+    };
+
+    async componentDidMount() {
+      await fetchTranslations();
+      this.setState({initialized: true});
+    }
+
     render() {
-      fetchTranslations();
+      const {initialized} = this.state;
+      if (!initialized) {
+        return null;
+      }
       const {...props} = this.props;
-      return <Component {...props} />;
+      return (
+        <>
+          <AppWrapper>
+            <AppHeader/>
+            <Component {...props} />
+          </AppWrapper>
+        </>
+      );
     }
   };
 
