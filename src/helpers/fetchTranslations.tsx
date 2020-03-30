@@ -1,6 +1,6 @@
-import { client } from 'graphql/Client';
-import { translationMap } from 'graphql/queries/translationMap';
-import { parseTranslations } from 'helpers/parseTranslations';
+import {client} from 'graphql/Client';
+import {translationMap} from 'graphql/queries/translationMap';
+import {parseTranslations} from 'helpers/parseTranslations';
 import {translationSingleton} from 'i18n/i18n';
 
 interface FetchTranslations {
@@ -16,14 +16,12 @@ export interface TranslationsMap {
   entries: TranslationsMapEntries[];
 }
 
-export const fetchTranslations = () => {
+export const fetchTranslations = async () => {
   if (translationSingleton.initialized) {
     return;
   }
-  client.query<FetchTranslations>({
+  const {data: {translationMap: {entries}}} = await client.query<FetchTranslations>({
     query: translationMap,
-  }).then(response => {
-    const { data: { translationMap : { entries } } } = response;
-    translationSingleton.init(parseTranslations(entries));
   });
+  translationSingleton.init(parseTranslations(entries));
 };

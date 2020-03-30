@@ -1,13 +1,17 @@
+import {CircularProgress} from '@material-ui/core';
 import {LoginCallback, SecureRoute, Security} from '@okta/okta-react';
 import {environmentConfig} from 'helpers/environmentConfig';
-import React from 'react';
+import React, {lazy, Suspense} from 'react';
 import {Provider} from 'react-redux';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {AppHeader} from '../components/AppHeader/AppHeader';
-import {HomeConnected} from '../components/Home/HomeConnected';
 import {fetchTranslations} from '../helpers/fetchTranslations';
 import AppWrapper from './AppWrapper';
 import {store} from './store';
+
+const LazyHomeConnected = lazy(() =>
+  import('../components/Home/HomeConnected').then(({ HomeConnected }) => ({ default: HomeConnected }))
+);
 
 interface TranslationState {
   initialized: boolean;
@@ -28,14 +32,16 @@ const withTranslations = Component =>
     render() {
       const {initialized} = this.state;
       if (!initialized) {
-        return null;
+        return <CircularProgress />;
       }
       const {...props} = this.props;
       return (
         <>
           <AppWrapper>
             <AppHeader/>
-            <Component {...props} />
+            <Suspense fallback={<CircularProgress />}>
+              <Component {...props} />
+            </Suspense>
           </AppWrapper>
         </>
       );
@@ -47,7 +53,7 @@ export const App: React.FC = () => (
     <Router>
       <Security authService={environmentConfig.authService}>
         <Switch>
-          <SecureRoute exact path="/" component={withTranslations(HomeConnected)}/>
+          <SecureRoute exact path="/" component={withTranslations(LazyHomeConnected)}/>
           <Route path='/implicit/callback' component={LoginCallback}/>
         </Switch>
       </Security>
