@@ -5,12 +5,12 @@ import React, {lazy, Suspense} from 'react';
 import {Provider} from 'react-redux';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {AppHeader} from '../components/AppHeader/AppHeader';
-import {fetchTranslations} from '../helpers/fetchTranslations';
+import {initTranslations} from '../helpers/initTranslations';
 import AppWrapper from './AppWrapper';
 import {store} from './store';
 
 const LazyHomeConnected = lazy(() =>
-  import('../components/Home/HomeConnected').then(({ HomeConnected }) => ({ default: HomeConnected }))
+  import('../components/Home/HomeConnected').then(({HomeConnected}) => ({default: HomeConnected}))
 );
 
 interface TranslationState {
@@ -25,21 +25,21 @@ const withTranslations = Component =>
     };
 
     async componentDidMount() {
-      await fetchTranslations();
+      await initTranslations();
       this.setState({initialized: true});
     }
 
     render() {
       const {initialized} = this.state;
       if (!initialized) {
-        return <CircularProgress />;
+        return <CircularProgress/>;
       }
       const {...props} = this.props;
       return (
         <>
           <AppWrapper>
             <AppHeader/>
-            <Suspense fallback={<CircularProgress />}>
+            <Suspense fallback={<CircularProgress/>}>
               <Component {...props} />
             </Suspense>
           </AppWrapper>
