@@ -1,7 +1,7 @@
 import {Action} from 'actions/action';
 import {ActionTypes} from 'actions/actionTypes';
 
-interface PingAction extends Action<string> {
+interface PingAction extends Action<PingState> {
 }
 
 export type PingState = string | null;
