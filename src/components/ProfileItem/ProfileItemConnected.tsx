@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
-import {compose} from 'redux';
-import {AppState} from 'reducers/root';
+import {AppState} from 'reducers';
 import {UserInfoState} from 'reducers/userInfo';
+import {compose} from 'redux';
 import {ProfileItem} from './ProfileItem';
 
 interface MapStateToProps extends Pick<UserInfoState, 'userId' | 'firstName' | 'lastName'> {

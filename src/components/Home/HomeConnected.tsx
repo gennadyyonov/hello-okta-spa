@@ -1,7 +1,7 @@
 import {pingThunk} from 'actions/pingThunk';
 import {connect} from 'react-redux';
+import {AppState} from 'reducers';
 import {MessageState} from 'reducers/message';
-import {AppState} from 'reducers/root';
 import {compose} from 'redux';
 import Home from './Home';
 
