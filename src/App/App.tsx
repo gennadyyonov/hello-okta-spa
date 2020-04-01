@@ -4,13 +4,13 @@ import {environmentConfig} from 'helpers/environmentConfig';
 import React, {lazy, Suspense} from 'react';
 import {Provider} from 'react-redux';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import {AppHeader} from '../components/AppHeader/AppHeader';
-import {initTranslations} from '../helpers/initTranslations';
-import AppWrapper from './AppWrapper';
-import {store} from './store';
+import {AppHeader} from 'components/AppHeader/AppHeader';
+import {initTranslations} from 'helpers/initTranslations';
+import AppWrapper from 'App/AppWrapper';
+import {store} from 'App/store';
 
 const LazyHomeConnected = lazy(() =>
-  import('../components/Home/HomeConnected').then(({HomeConnected}) => ({default: HomeConnected}))
+  import('components/Home/HomeConnected').then(({HomeConnected}) => ({default: HomeConnected}))
 );
 
 interface TranslationState {

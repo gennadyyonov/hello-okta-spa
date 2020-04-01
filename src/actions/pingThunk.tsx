@@ -1,6 +1,6 @@
-import {client} from '../graphql/Client';
-import {ping} from '../graphql/queries/ping';
-import {ActionTypes} from '../constants/actionTypes';
+import {client} from 'graphql/Client';
+import {ping} from 'graphql/queries/ping';
+import {ActionTypes} from 'actions/actionTypes';
 
 export const pingThunk = () => async (dispatch): Promise<void> => {
   const {data} = await client.query({query: ping});

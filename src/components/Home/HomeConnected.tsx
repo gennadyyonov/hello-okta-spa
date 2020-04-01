@@ -1,8 +1,8 @@
-import Home from 'components/Home/Home';
+import {pingThunk} from 'actions/pingThunk';
 import {connect} from 'react-redux';
+import {AppState} from 'reducers/root';
 import {compose} from 'redux';
-import {pingThunk} from '../../actions/pingThunk';
-import {AppState} from '../../reducers';
+import Home from './Home';
 
 interface MapStateToProps {
   message: string;

@@ -1,9 +1,9 @@
-import React from 'react';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import IconButton from '@material-ui/core/IconButton';
-import {ProfileItemProps} from './ProfileItemConnected';
 import {Box} from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import React from 'react';
+import {ProfileItemProps} from './ProfileItemConnected';
 
 export const ProfileItem: React.FC<ProfileItemProps> = (props) => {
   const {

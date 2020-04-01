@@ -1,5 +1,5 @@
-import {Translations} from '../i18n/i18n';
-import { TranslationsMapEntries } from './initTranslations';
+import {Translations} from 'i18n/i18n';
+import { TranslationsMapEntries } from 'helpers/initTranslations';
 
 export const parseTranslations = (translationEntries: TranslationsMapEntries[]): Translations => {
   const result: Partial<Translations> = {};
