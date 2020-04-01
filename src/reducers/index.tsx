@@ -1,14 +1,12 @@
 import {messageReducer} from 'reducers/message';
 import {pingReducer} from 'reducers/ping';
-import {AppState, defaultState} from 'reducers/root';
 import {userInfoReducer} from 'reducers/userInfo';
+import {combineReducers} from 'redux';
 
-export const rootReducer = (state: AppState = defaultState, action): AppState => {
-  const reducers = [userInfoReducer, messageReducer, pingReducer];
-  let finalState = state;
-  let i;
-  for (i = 0; i < reducers.length; i++) {
-    finalState = reducers[i](finalState, action);
+export const rootReducer = combineReducers(
+  {
+    userInfo: userInfoReducer,
+    message: messageReducer,
+    ping: pingReducer
   }
-  return finalState
-};
+);

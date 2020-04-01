@@ -1,11 +1,11 @@
 import {pingThunk} from 'actions/pingThunk';
 import {connect} from 'react-redux';
+import {MessageState} from 'reducers/message';
 import {AppState} from 'reducers/root';
 import {compose} from 'redux';
 import Home from './Home';
 
-interface MapStateToProps {
-  message: string;
+interface MapStateToProps extends Pick<MessageState, 'text'>, Pick<AppState, 'ping'> {
 }
 
 interface MapDispatchToProps {
@@ -13,16 +13,24 @@ interface MapDispatchToProps {
 }
 
 export interface HomeProps {
-  message: string;
+  message?: string | null;
   onPing(): void;
 }
 
-const mapStateToProps = ({message}): MapStateToProps => ({message});
+const mapStateToProps = (state) => {
+  const {
+    message: {
+      text,
+    },
+    ping
+  } = state;
+  return {text, ping};
+};
 
-const mapDispatchToProps = { doPing: pingThunk };
+const mapDispatchToProps = {doPing: pingThunk};
 
-const mergeProps = ({message}: MapStateToProps, {doPing}: MapDispatchToProps): HomeProps => {
-  return {message, onPing: () => doPing()}
+const mergeProps = ({text, ping}: MapStateToProps, {doPing}: MapDispatchToProps): HomeProps => {
+  return {message: ping ? ping : text, onPing: () => doPing()}
 };
 
 export const HomeConnected = compose(

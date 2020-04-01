@@ -1,6 +1,5 @@
 import {Action} from 'actions/action';
 import {ActionTypes} from 'actions/actionTypes';
-import {AppState, defaultState} from 'reducers/root';
 
 interface UserInfoAction extends Action<UserInfoState> {
 }
@@ -11,17 +10,11 @@ export interface UserInfoState {
   lastName?: string;
 }
 
-export const userInfoReducer = (state: AppState = defaultState, action: UserInfoAction): AppState => {
+export const defaultUserInfoState: UserInfoState = {};
+
+export const userInfoReducer = (state: UserInfoState = defaultUserInfoState, action: UserInfoAction): UserInfoState => {
   if (action.type === ActionTypes.USER_INFO_ACTION) {
-    const userInfo = action.payload;
-    return {
-      ...state,
-      userInfo: {
-        userId: userInfo.userId,
-        firstName: userInfo.firstName,
-        lastName: userInfo.lastName,
-      }
-    };
+    return action.payload;
   } else {
     return state;
   }

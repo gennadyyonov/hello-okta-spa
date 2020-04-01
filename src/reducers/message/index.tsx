@@ -1,22 +1,20 @@
 import {Action} from 'actions/action';
 import {ActionTypes} from 'actions/actionTypes';
-import {AppState, defaultState} from 'reducers/root';
 
 interface MessageAction extends Action<MessageState> {
 }
 
 export interface MessageState {
-  text?: string;
+  text?: string | null;
 }
 
-export const messageReducer = (state: AppState = defaultState, action: MessageAction): AppState => {
+export const defaultMessageState: MessageState = {
+  text: null
+};
+
+export const messageReducer = (state: MessageState = defaultMessageState, action: MessageAction): MessageState => {
   if (action.type === ActionTypes.HELLO_ACTION) {
-    const message = action.payload;
-    const text = message.text ? message.text : state.message;
-    return {
-      ...state,
-      message: text
-    }
+    return action.payload
   } else {
     return state;
   }
