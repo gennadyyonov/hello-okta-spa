@@ -1,8 +1,10 @@
 import {Action} from 'actions/action';
 import {ActionTypes} from 'actions/actionTypes';
 
-interface MessageAction extends Action<MessageState> {
+interface MessageAction extends Action<MessageState | PingState> {
 }
+
+export type PingState = string | null;
 
 export interface MessageState {
   text?: string | null;
@@ -13,9 +15,15 @@ export const defaultMessageState: MessageState = {
 };
 
 export const messageReducer = (state: MessageState = defaultMessageState, action: MessageAction): MessageState => {
-  if (action.type === ActionTypes.HELLO_ACTION) {
-    return action.payload
-  } else {
-    return state;
+  switch (action.type) {
+    case ActionTypes.HELLO_ACTION:
+      return action.payload as MessageState;
+    case ActionTypes.PING_ACTION:
+      const text = action.payload as PingState;
+      return {
+        text
+      };
+    default:
+      return state;
   }
 };

@@ -5,7 +5,7 @@ import {MessageState} from 'reducers/message';
 import {compose} from 'redux';
 import Home from './Home';
 
-interface MapStateToProps extends Pick<MessageState, 'text'>, Pick<AppState, 'ping'> {
+interface MapStateToProps extends Pick<MessageState, 'text'> {
 }
 
 interface MapDispatchToProps {
@@ -21,16 +21,15 @@ const mapStateToProps = (state) => {
   const {
     message: {
       text,
-    },
-    ping
+    }
   } = state;
-  return {text, ping};
+  return {text};
 };
 
 const mapDispatchToProps = {doPing: pingThunk};
 
-const mergeProps = ({text, ping}: MapStateToProps, {doPing}: MapDispatchToProps): HomeProps => {
-  return {message: ping ? ping : text, onPing: () => doPing()}
+const mergeProps = ({text}: MapStateToProps, {doPing}: MapDispatchToProps): HomeProps => {
+  return {message: text, onPing: () => doPing()}
 };
 
 export const HomeConnected = compose(
