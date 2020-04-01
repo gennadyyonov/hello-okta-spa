@@ -2,8 +2,8 @@ import {CircularProgress} from '@material-ui/core';
 import {initEnvironment} from 'helpers/environmentConfig';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {App} from './App/App';
-import * as serviceWorker from './serviceWorker';
+import {App} from 'App/App';
+import * as serviceWorker from 'serviceWorker';
 
 const root = document.getElementById('root');
 

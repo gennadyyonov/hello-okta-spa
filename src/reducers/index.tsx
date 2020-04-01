@@ -1,85 +1,24 @@
-import {ActionTypes} from '../constants/actionTypes';
-
-export interface Action<T> {
-  type: ActionTypes;
-  payload: T;
-}
-
-export interface PingAction extends Action<string> {
-}
-
-export interface UserInfoAction extends Action<UserInfoState> {
-}
-
-export interface MessageAction extends Action<MessageState> {
-}
-
-export interface UserInfoState {
-  userId?: string;
-  firstName?: string;
-  lastName?: string;
-}
-
-export interface MessageState {
-  text?: string;
-}
+import {defaultMessageState, messageReducer, MessageState} from 'reducers/message';
+import {defaultPingState, pingReducer, PingState} from 'reducers/ping';
+import {defaultUserInfoState, userInfoReducer, UserInfoState} from 'reducers/userInfo';
+import {combineReducers} from 'redux';
 
 export interface AppState {
-  message: string;
+  message: MessageState;
   userInfo: UserInfoState;
+  ping: PingState;
 }
 
 export const defaultState: AppState = {
-  message: 'Loading...',
-  userInfo: {}
+  message: defaultMessageState,
+  userInfo: defaultUserInfoState,
+  ping: defaultPingState,
 };
 
-const pingReducer = (state: AppState = defaultState, action: PingAction): AppState => {
-  if (action.type === ActionTypes.PING_ACTION) {
-    return {
-      ...state,
-      message: action.payload
-    };
-  } else {
-    return state;
+export const rootReducer = combineReducers(
+  {
+    userInfo: userInfoReducer,
+    message: messageReducer,
+    ping: pingReducer
   }
-};
-
-const userInfoReducer = (state: AppState = defaultState, action: UserInfoAction): AppState => {
-  if (action.type === ActionTypes.USER_INFO_ACTION) {
-    const userInfo = action.payload;
-    return {
-      ...state,
-      userInfo: {
-        userId: userInfo.userId,
-        firstName: userInfo.firstName,
-        lastName: userInfo.lastName,
-      }
-    };
-  } else {
-    return state;
-  }
-};
-
-const helloReducer = (state: AppState = defaultState, action: MessageAction): AppState => {
-  if (action.type === ActionTypes.HELLO_ACTION) {
-    const message = action.payload;
-    const text = message.text ? message.text : state.message;
-    return {
-      ...state,
-      message: text
-    }
-  } else {
-    return state;
-  }
-};
-
-export const rootReducer = (state: AppState = defaultState, action): AppState => {
-  const reducers = [userInfoReducer, helloReducer, pingReducer];
-  let finalState = state;
-  let i;
-  for (i = 0; i < reducers.length; i++) {
-    finalState = reducers[i](finalState, action);
-  }
-  return finalState
-};
+);
