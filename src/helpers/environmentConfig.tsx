@@ -19,7 +19,7 @@ export const initEnvironment = async () => {
     redirectUri: window.location.origin + '/implicit/callback',
     clientId: oktaClientId,
     scope: ['email', 'profile', 'openid'],
-    responseType: 'token',
+    pkce: true,
   });
 };
 
