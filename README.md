@@ -2,7 +2,7 @@
 
 This demo basically shows how to use the [Okta React](https://github.com/okta/okta-oidc-js/tree/master/packages/okta-react) Library to login User to React application. 
 
-The login is achieved through the [Implicit Flow](https://developer.okta.com/docs/guides/implement-implicit/overview/), where the User is redirected to the Okta-Hosted Login Page. 
+The login is achieved through the [Authorization Code Flow with PKCE](https://developer.okta.com/docs/guides/implement-auth-code-pkce/overview/), where the User is redirected to the Okta-Hosted Login Page. 
 
 After the User authenticates he or she is redirected back to the application with an ID token and access token.
 
