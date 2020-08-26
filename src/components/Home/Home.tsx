@@ -7,6 +7,7 @@ import {helloThunk} from 'actions/helloThunk';
 import {AuthType} from 'graphql/queries/hello';
 import {i18n} from 'i18n/i18n';
 import {HomeProps} from './HomeConnected';
+import {Logout} from "components/Logout/Logout";
 
 const Home: React.FC<HomeProps> = (props) => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const Home: React.FC<HomeProps> = (props) => {
           onClick={onPing}>
           {i18n('home_button_ping')}
         </Button>
+        <Logout/>
       </Box>
     </Box>
   )

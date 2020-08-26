@@ -30,3 +30,10 @@ export const getAccessToken = (): AccessToken | null => {
   const authState = environmentConfig.authService.getAuthState();
   return authState ? {tokenType: 'Bearer', accessToken: authState.accessToken} : null;
 };
+
+export const logout = async () => {
+  if (!environmentConfig.authService) {
+    return;
+  }
+  await environmentConfig.authService.logout('/');
+};
