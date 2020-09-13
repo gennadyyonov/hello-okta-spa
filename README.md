@@ -31,8 +31,34 @@ Assuming you already have `npm` installed, install `yarn` globally by running `n
 * [React](https://reactjs.org/)
 * [React Redux](https://react-redux.js.org/)
 * [Okta React SDK](https://github.com/okta/okta-oidc-js/tree/master/packages/okta-react)
+* [Okta Auth JavaScript SDK](https://github.com/okta/okta-auth-js)
 * [React Router](https://reacttraining.com/react-router)
 * [Redux Thunk](https://github.com/reduxjs/redux-thunk)
 * [GraphQL Apollo Client](https://www.apollographql.com/docs/react/)
 * [GraphQL Tag](https://github.com/apollographql/graphql-tag)
 * [Material UI](https://material-ui.com/)
+
+## IE11 Compatibility
+
+### Issue
+[Okta Auth JavaScript SDK](https://github.com/okta/okta-auth-js) uses session and local storage to temporally save PKCE code verifier.
+
+These storages are partitioned by security zones in the IE11 and older versions of Microsoft Edge browser.
+When the application is redirected across zones, the session storage and local storage are cleared. 
+Specifically, the session storage is cleared in the regular browser navigation, and both the session and local storage are cleared in the InPrivate mode of the browser.
+
+Therefore, the following error can be received opening application in IE11 trying to get PKCE code verifier after it was cleared from storage upon navigation between application and Okta:
+```
+AuthSdkError: Could not load PKCE codeVerifier from storage. This may indicate the auth flow has already completed or multiple auth flows are executing concurrently.
+```
+### Workaround
+
+Ensure that the application domain and any other sites involved in the redirects of the authentication flow are added as trusted sites in the security settings of the browser, so that they belong to the same security zone. 
+To do so, follow these steps:
+
+* Open **Internet Explorer** and click on the settings (gear icon) in the top-right corner
+* Select **Internet Options**
+* Select the **Security** tab
+* Under the **Trusted Sites** option, click on the sites button and add the URLs in the dialog box that opens.
+
+![IE11 Trusted Sites](images/ie11_trusted_sites.PNG)
