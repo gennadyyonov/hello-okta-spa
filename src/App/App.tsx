@@ -54,7 +54,7 @@ export const App: React.FC = () => (
       <Security authService={environmentConfig.authService}>
         <Switch>
           <SecureRoute exact path="/" component={withTranslations(LazyHomeConnected)}/>
-          <Route path='/implicit/callback' component={LoginCallback}/>
+          <Route exact path='/implicit/callback' component={LoginCallback}/>
         </Switch>
       </Security>
     </Router>

@@ -28,7 +28,7 @@ export const getAccessToken = (): AccessToken | null => {
     return null;
   }
   const authState = environmentConfig.authService.getAuthState();
-  return authState ? {tokenType: 'Bearer', accessToken: authState.accessToken} : null;
+  return authState && authState.accessToken ? {tokenType: 'Bearer', accessToken: authState.accessToken} : null;
 };
 
 export const logout = async () => {
