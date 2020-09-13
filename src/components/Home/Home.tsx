@@ -31,6 +31,11 @@ const Home: React.FC<HomeProps> = (props) => {
           onClick={onPing}>
           {i18n('home_button_ping')}
         </Button>
+      </Box>
+      <Box pt={4}>
+        <Alert severity="warning">{i18n('logout_hint')}</Alert>
+      </Box>
+      <Box pt={2}>
         <Logout/>
       </Box>
     </Box>

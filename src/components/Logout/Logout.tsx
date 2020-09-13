@@ -7,7 +7,7 @@ export const Logout = () => {
     return (
       <Button
         onClick={logout}
-        variant="outlined"
+        variant="contained"
         color="primary">
         {i18n('button_logout')}
       </Button>
