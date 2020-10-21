@@ -1,3 +1,6 @@
+import '@okta/okta-auth-js/polyfill';
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
 import {CircularProgress} from '@material-ui/core';
 import {initEnvironment} from 'helpers/environmentConfig';
 import React from 'react';
