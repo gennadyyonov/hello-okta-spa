@@ -1290,27 +1290,40 @@
   resolved "https://registry.yarnpkg.com/@okta/configuration-validation/-/configuration-validation-0.4.1.tgz#6fa4520bc96c27b3d7aedcb0523de1fbceee9105"
   integrity sha512-p8QcApCSyAXtlyB7p7jXkAkcTedvK9WFkmEduVA3XxQQVs3njxD9vTooFj4+AF6WNRIuGOis/utL7m0BzYkyVw==
 
-"@okta/okta-auth-js@^2.11.2":
-  version "2.13.2"
-  resolved "https://registry.yarnpkg.com/@okta/okta-auth-js/-/okta-auth-js-2.13.2.tgz#94cc3f9cb621fa8f2f71eecc3cb025ad805bbd0f"
-  integrity sha512-fjPZATU286/cYTMiUY0PxItrukPNa3W3cwhEPCjeHYxb4EXCt8OdmPjaoKfvERALmLEHbNGqweqalTF5Q7x3wg==
+"@okta/okta-auth-js@^3.2.3":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@okta/okta-auth-js/-/okta-auth-js-3.2.3.tgz#3bae9aa24eeac23b9d86504df346c514b62a6abf"
+  integrity sha512-lPKcITlHhfNhrGhnL8+zzlk86u2tZnXAahUPtiyEwFr+ktTpo8vWhraCR13hw0z46rTRVZ1lCMtedJt/wzMaoQ==
   dependencies:
     Base64 "0.3.0"
     cross-fetch "^3.0.0"
     js-cookie "2.2.0"
     node-cache "^4.2.0"
-    q "1.4.1"
-    reqwest "2.0.5"
     tiny-emitter "1.1.0"
     xhr2 "0.1.3"
 
-"@okta/okta-react@^2.0.0":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@okta/okta-react/-/okta-react-2.0.1.tgz#390ac3083984e3c67dd0c61909bfcbc93e11bc50"
-  integrity sha512-tdZBvXdyIGSGGmTWWw/u4wY6rL5FususWCVxvS6ZLqt3WLBBaUgjRZ9HJvINOGPT/KcpPwXTtirlzToZdpMFHQ==
+"@okta/okta-auth-js@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@okta/okta-auth-js/-/okta-auth-js-4.0.0.tgz#1c9b5518678e29e1e799c59556881bf6d61c01d6"
+  integrity sha512-Iy0iIuZHFJMcxYDuW7ZbQ0TgSPmGZzvNrMoTKAWseW77v0ez1iBLqxU71Ymuzpvr1Cw2SWnUltcs+vZQtpHFug==
+  dependencies:
+    Base64 "0.3.0"
+    core-js "^3.6.5"
+    cross-fetch "^3.0.0"
+    js-cookie "2.2.0"
+    node-cache "^4.2.0"
+    text-encoding "^0.7.0"
+    tiny-emitter "1.1.0"
+    webcrypto-shim "^0.1.5"
+    xhr2 "0.1.3"
+
+"@okta/okta-react@3.0.7":
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/@okta/okta-react/-/okta-react-3.0.7.tgz#857fbaca128065b7a7d180469791d6a1973a95e2"
+  integrity sha512-nmPP53FH7ocK2gSdFrAwGIczYXOsGZx0Hyv81yi40y4jkO341rU3ikWd6xQZkcBJCt9P1R2++/1W6mgDlObPmg==
   dependencies:
     "@okta/configuration-validation" "^0.4.1"
-    "@okta/okta-auth-js" "^2.11.2"
+    "@okta/okta-auth-js" "^3.2.3"
     babel-runtime "^6.26.0"
     prop-types "^15.5.10"
 
@@ -3356,6 +3369,11 @@ core-js@^3.5.0:
   version "3.6.4"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.4.tgz#440a83536b458114b9cb2ac1580ba377dc470647"
   integrity sha512-4paDGScNgZP2IXXilaffL9X7968RuvwlkK3xWtZRVqgd8SYNiVKRJvkFd1aqqEuPfN7E68ZHEp9hDj6lHj4Hyw==
+
+core-js@^3.6.5:
+  version "3.6.5"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.5.tgz#7395dc273af37fb2e50e9bd3d9fe841285231d1a"
+  integrity sha512-vZVEEwZoIsI+vPEuoF9Iqf5H7/M3eeQqWlQnYa8FSKKePuYTf5MWnxb5SDAzCa60b3JBRS5g9b+Dq7b1y/RCrA==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -7111,10 +7129,10 @@ minimatch@3.0.4, minimatch@^3.0.4:
   dependencies:
     brace-expansion "^1.1.7"
 
-minimist@1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.2.tgz#b00a00230a1108c48c169e69a291aafda3aacd63"
-  integrity sha512-rIqbOrKb8GJmx/5bc2M0QchhUouMXSpd1RTclXsB41JdL+VtnojfaJR+h7F9k18/4kHUsBFgk80Uk+q569vjPA==
+minimist@1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.3.tgz#3db5c0765545ab8637be71f333a104a965a9ca3f"
+  integrity sha512-+bMdgqjMN/Z77a6NlY/I3U5LlRDbnmaAk6lDveAPKwSpcPM4tKAuYsvYF8xjhOPXhOYGe/73vVLVez5PW+jqhw==
 
 minimist@^1.1.1, minimist@^1.2.0, minimist@^1.2.5:
   version "1.2.5"
@@ -8849,11 +8867,6 @@ punycode@^2.1.0, punycode@^2.1.1:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-q@1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/q/-/q-1.4.1.tgz#55705bcd93c5f3673530c2c2cbc0c2b3addc286e"
-  integrity sha1-VXBbzZPF82c1MMLCy8DCs63cKG4=
-
 q@^1.1.2:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
@@ -9394,11 +9407,6 @@ requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
-
-reqwest@2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/reqwest/-/reqwest-2.0.5.tgz#00fb15ac4918c419ca82b43f24c78882e66039a1"
-  integrity sha1-APsVrEkYxBnKgrQ/JMeIguZgOaE=
 
 resolve-cwd@^2.0.0:
   version "2.0.0"
@@ -10404,6 +10412,11 @@ test-exclude@^5.2.3:
     read-pkg-up "^4.0.0"
     require-main-filename "^2.0.0"
 
+text-encoding@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/text-encoding/-/text-encoding-0.7.0.tgz#f895e836e45990624086601798ea98e8f36ee643"
+  integrity sha512-oJQ3f1hrOnbRLOcwKz0Liq2IcrvDeZRHXhd9RgLrsT+DjWY/nty1Hi7v3dtkaEYbPYe0mUoOfzRrMwfXXwgPUA==
+
 text-table@0.2.0, text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
@@ -10889,6 +10902,11 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   dependencies:
     minimalistic-assert "^1.0.0"
 
+webcrypto-shim@^0.1.5:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/webcrypto-shim/-/webcrypto-shim-0.1.6.tgz#b4554d95c0a63637226c9732440dc674bf96f5cb"
+  integrity sha512-0o612s3S5z3IkDSRghIwd3Ul4X8NRmmZDpt6PWGI9gSM+nygVvrfzGjhIh4vwzlOJxYxS0fcFD1wh3yznuVzFg==
+
 webidl-conversions@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-4.0.2.tgz#a855980b1f0b6b359ba1d5d9fb39ae941faa63ad"
@@ -11009,9 +11027,9 @@ websocket-driver@>=0.5.1:
     websocket-extensions ">=0.1.1"
 
 websocket-extensions@>=0.1.1:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.3.tgz#5d2ff22977003ec687a4b87073dfbbac146ccf29"
-  integrity sha512-nqHUnMXmBzT0w570r2JpJxfiSD1IzoI+HGVdd3aZ0yNi3ngvQ4jv1dtHt5VGxfI2yj5yqImPhOK4vmIh2xMbGg==
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.4.tgz#7f8473bc839dfd87608adb95d7eb075211578a42"
+  integrity sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==
 
 whatwg-encoding@^1.0.1, whatwg-encoding@^1.0.3, whatwg-encoding@^1.0.5:
   version "1.0.5"
