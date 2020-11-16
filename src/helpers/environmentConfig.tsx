@@ -1,5 +1,10 @@
-import { AuthService } from '@okta/okta-react';
-import { fetchEnvironmentConfig } from 'helpers/fetchEnvironmentConfig';
+import {AuthService} from '@okta/okta-react';
+import {fetchEnvironmentConfig} from 'helpers/fetchEnvironmentConfig';
+
+export const logoutUrl =
+    process.env.NODE_ENV === 'production'
+        ? '/bff/logout'
+        : process.env.REACT_APP_LOGOUT;
 
 export interface AccessToken {
   tokenType: string;
@@ -31,9 +36,24 @@ export const getAccessToken = (): AccessToken | null => {
   return authState && authState.accessToken ? {tokenType: 'Bearer', accessToken: authState.accessToken} : null;
 };
 
+const logoutFromApp = async () => {
+  let headers = {};
+  const token = getAccessToken();
+  if (token) {
+    headers = {
+      ...headers,
+      authorization: `${token.tokenType} ${token.accessToken}`,
+    };
+  }
+  await fetch(logoutUrl || '', {
+    method: 'POST', credentials: 'include', headers
+  });
+};
+
 export const logout = async () => {
   if (!environmentConfig.authService) {
     return;
   }
+  await logoutFromApp();
   await environmentConfig.authService.logout('/');
 };
