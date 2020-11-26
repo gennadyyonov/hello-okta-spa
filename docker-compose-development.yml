@@ -8,6 +8,5 @@ services:
       - "3000:8080"
     volumes:
       - ./nginx/development/config.js:/usr/share/nginx/html/config.js
-    environment:
-      - NGINXPORT=8080
-      - "CSPHEADER=default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * 'unsafe-inline';"
+    env_file:
+      - ./nginx/development/.env.development
