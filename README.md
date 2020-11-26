@@ -66,8 +66,8 @@ To do so, follow these steps:
 ## Docker
 
 ```
-docker-compose -f docker-compose-development.yml build web
-docker-compose -f docker-compose-development.yml up web
+docker-compose --env-file=./nginx/development/.env.development build web
+docker-compose --env-file=./nginx/development/.env.development up web
 ```
 **Note**, application should be built first using the following command:
 ```
