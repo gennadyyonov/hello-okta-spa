@@ -3,8 +3,9 @@ import {HttpLink} from 'apollo-link-http';
 import {ApolloLink, concat} from 'apollo-link';
 import {InMemoryCache} from 'apollo-cache-inmemory';
 import {getAccessToken} from 'helpers/environmentConfig';
+import {Config} from "../helpers/config";
 
-const backendGQLUri = process.env.NODE_ENV === 'production' ? '/bff/graphql' : process.env.REACT_APP_BFF;
+const backendGQLUri = Config.nodeEnv === 'production' ? '/bff/graphql' : Config.bffUrl;
 
 const httpLink = new HttpLink({
   uri: backendGQLUri,
