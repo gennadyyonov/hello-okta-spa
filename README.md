@@ -69,3 +69,8 @@ To do so, follow these steps:
 docker-compose -f docker-compose-development.yml build web
 docker-compose -f docker-compose-development.yml up web
 ```
+**Note**, application should be built first using the following command:
+```
+yarn install
+yarn build
+```
