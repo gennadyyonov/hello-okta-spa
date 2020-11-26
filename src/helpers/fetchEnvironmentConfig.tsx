@@ -1,7 +1,6 @@
-export const environmentConfigUrl =
-  process.env.NODE_ENV === 'production'
-    ? '/bff/config/environment'
-    : process.env.REACT_APP_ENVIRONMENT_CONFIG;
+import {Config} from "./config";
+
+export const environmentConfigUrl = Config.nodeEnv === 'production' ? '/bff/config/environment' : Config.environmentConfigUrl;
 
 export const fetchEnvironmentConfig = async () => {
   const response = await fetch(environmentConfigUrl || '', {

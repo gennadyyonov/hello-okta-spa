@@ -1,10 +1,8 @@
 import {AuthService} from '@okta/okta-react';
 import {fetchEnvironmentConfig} from 'helpers/fetchEnvironmentConfig';
+import {Config} from "./config";
 
-export const logoutUrl =
-    process.env.NODE_ENV === 'production'
-        ? '/bff/logout'
-        : process.env.REACT_APP_LOGOUT;
+export const logoutUrl = Config.nodeEnv === 'production' ? '/bff/logout' : Config.logoutUrl;
 
 export interface AccessToken {
   tokenType: string;

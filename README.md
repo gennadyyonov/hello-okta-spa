@@ -62,3 +62,10 @@ To do so, follow these steps:
 * Under the **Trusted Sites** option, click on the sites button and add the URLs in the dialog box that opens.
 
 ![IE11 Trusted Sites](images/ie11_trusted_sites.PNG)
+
+## Docker
+
+```
+docker-compose -f docker-compose-development.yml build web
+docker-compose -f docker-compose-development.yml up web
+```
