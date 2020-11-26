@@ -1,5 +1,5 @@
 server {
-    listen 8080;
+    listen $NGINXPORT;
     server_name localhost;
 
     location / {
@@ -7,7 +7,7 @@ server {
         index index.html index.htm;
         try_files $uri $uri/ /index.html;
         add_header Cache-Control 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0';
-        add_header Content-Security-Policy "default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * 'unsafe-inline';";
+        add_header Content-Security-Policy "$CSPHEADER";
     }
 
     location /static {
