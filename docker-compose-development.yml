@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - "3000:80"
+    volumes:
+      - ./nginx/development/config.js:/usr/share/nginx/html/config.js
+    env_file:
+      - ./nginx/development/.env.development
