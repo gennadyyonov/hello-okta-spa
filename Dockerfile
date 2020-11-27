@@ -6,8 +6,8 @@ RUN rm /etc/nginx/conf.d/default.conf
 
 COPY ./nginx/default.conf.template /etc/nginx/conf.d/default.conf.template
 
-EXPOSE ${NGINXPORT}
+EXPOSE 80
 
 CMD ["/bin/sh",\
     "-c",\
-    "export NGINXPORT CSPHEADER && envsubst '$$NGINXPORT $$CSPHEADER' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
+    "export CSPHEADER && envsubst '$$CSPHEADER' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
