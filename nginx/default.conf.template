@@ -6,6 +6,7 @@ server {
         index index.html index.htm;
         try_files $uri $uri/ /index.html;
         add_header Cache-Control 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0';
+        add_header Strict-Transport-Security "max-age=315360001; includeSubDomains";
         add_header Content-Security-Policy "$CSPHEADER";
     }
 
@@ -13,6 +14,8 @@ server {
         root   /usr/share/nginx/html;
         expires 1y;
         add_header Cache-Control 'public, immutable';
+        add_header Strict-Transport-Security "max-age=315360001; includeSubDomains";
+        add_header Content-Security-Policy "$CSPHEADER";
         access_log off;
     }
 }
