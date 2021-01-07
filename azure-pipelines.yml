@@ -19,5 +19,29 @@ steps:
   displayName: 'Run a multi-line script'
 
 - task: NodeTool@0
+  displayName: 'Use Node 12.x'
   inputs:
     versionSpec: '12.x'
+    
+- task: YarnInstaller@3
+  displayName: 'Use Yarn 1.22.x'
+  inputs:
+    versionSpec: '1.22.x'
+    
+- task: Yarn@3
+  displayName: 'Yarn Install'
+  inputs:
+    arguments: 'install'
+    
+- task: Yarn@3
+  displayName: 'Yarn Build'
+  inputs:
+    arguments: 'build'
+
+- task: Docker@2
+  displayName: 'Docker Build SPA'
+  inputs:
+    containerRegistry: 'hello-okta-dr'
+    repository: 'hellooktaspa'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
