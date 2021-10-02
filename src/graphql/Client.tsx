@@ -1,9 +1,9 @@
-import {ApolloClient} from 'apollo-client';
-import {HttpLink} from 'apollo-link-http';
-import {ApolloLink, concat} from 'apollo-link';
 import {InMemoryCache} from 'apollo-cache-inmemory';
-import {getAccessToken} from 'helpers/environmentConfig';
+import {ApolloClient} from 'apollo-client';
+import {ApolloLink, concat} from 'apollo-link';
+import {HttpLink} from 'apollo-link-http';
 import {Config} from "../helpers/config";
+import {prepareHeaders} from '../helpers/prepareHeaders';
 
 const backendGQLUri = Config.nodeEnv === 'production' ? '/bff/graphql' : Config.bffUrl;
 
@@ -15,15 +15,7 @@ const httpLink = new HttpLink({
 const cache = new InMemoryCache();
 
 const authMiddleware = new ApolloLink((operation, forward) => {
-  const token = getAccessToken();
-  if (token) {
-    operation.setContext(({headers = {}}) => ({
-      headers: {
-        ...headers,
-        authorization: `${token.tokenType} ${token.accessToken}`,
-      }
-    }));
-  }
+  operation.setContext(({headers = {}}) => prepareHeaders(headers));
   return forward(operation);
 });
 
