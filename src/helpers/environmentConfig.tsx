@@ -1,6 +1,7 @@
 import {AuthService} from '@okta/okta-react';
 import {fetchEnvironmentConfig} from 'helpers/fetchEnvironmentConfig';
 import {Config} from "./config";
+import {prepareHeaders} from './prepareHeaders';
 
 export const logoutUrl = Config.nodeEnv === 'production' ? '/bff/logout' : Config.logoutUrl;
 
@@ -35,16 +36,9 @@ export const getAccessToken = (): AccessToken | null => {
 };
 
 const logoutFromApp = async () => {
-  let headers = {};
-  const token = getAccessToken();
-  if (token) {
-    headers = {
-      ...headers,
-      authorization: `${token.tokenType} ${token.accessToken}`,
-    };
-  }
+  const context = prepareHeaders({});
   await fetch(logoutUrl || '', {
-    method: 'POST', credentials: 'include', headers
+    method: 'POST', credentials: 'include', headers: context.headers
   });
 };
 
