@@ -1,4 +1,4 @@
-import {AuthService} from '@okta/okta-react';
+import {OktaAuth} from '@okta/okta-auth-js';
 import {fetchEnvironmentConfig} from 'helpers/fetchEnvironmentConfig';
 import {Config} from "./config";
 import {prepareHeaders} from './prepareHeaders';
@@ -11,28 +11,26 @@ export interface AccessToken {
 }
 
 interface EnvironmentConfig {
-  authService?: AuthService;
+  oktaAuth?: OktaAuth;
 }
 
 export const environmentConfig: EnvironmentConfig = {};
 
 export const initEnvironment = async () => {
   const {oktaClientId, oktaIssuer} = await fetchEnvironmentConfig();
-  environmentConfig.authService = new AuthService({
+  environmentConfig.oktaAuth = new OktaAuth({
     issuer: oktaIssuer,
     redirectUri: window.location.origin + '/implicit/callback',
     clientId: oktaClientId,
-    scope: ['email', 'profile', 'openid'],
-    pkce: true,
   });
 };
 
 export const getAccessToken = (): AccessToken | null => {
-  if (!environmentConfig.authService) {
+  if (!environmentConfig.oktaAuth) {
     return null;
   }
-  const authState = environmentConfig.authService.getAuthState();
-  return authState && authState.accessToken ? {tokenType: 'Bearer', accessToken: authState.accessToken} : null;
+  const accessToken = environmentConfig.oktaAuth.getAccessToken();
+  return accessToken ? {tokenType: 'Bearer', accessToken: accessToken} : null;
 };
 
 const logoutFromApp = async () => {
@@ -43,9 +41,9 @@ const logoutFromApp = async () => {
 };
 
 export const logout = async () => {
-  if (!environmentConfig.authService) {
+  if (!environmentConfig.oktaAuth) {
     return;
   }
   await logoutFromApp();
-  await environmentConfig.authService.logout('/');
+  await environmentConfig.oktaAuth.signOut({postLogoutRedirectUri: window.location.origin + '/'});
 };
