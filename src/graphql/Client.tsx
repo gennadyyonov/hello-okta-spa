@@ -1,27 +1,25 @@
-import {InMemoryCache} from 'apollo-cache-inmemory';
-import {ApolloClient} from 'apollo-client';
-import {ApolloLink, concat} from 'apollo-link';
-import {HttpLink} from 'apollo-link-http';
+import {ApolloClient, createHttpLink, from, InMemoryCache} from '@apollo/client';
+import {setContext} from '@apollo/client/link/context';
 import {Config} from "../helpers/config";
 import {prepareHeaders} from '../helpers/prepareHeaders';
 
 const backendGQLUri = Config.nodeEnv === 'production' ? '/bff/graphql' : Config.bffUrl;
 
-const httpLink = new HttpLink({
+const httpLink = createHttpLink({
   uri: backendGQLUri,
   credentials: 'include',
 });
 
 const cache = new InMemoryCache();
 
-const authMiddleware = new ApolloLink((operation, forward) => {
-  operation.setContext(({headers = {}}) => prepareHeaders(headers));
-  return forward(operation);
+const authMiddleware = setContext((_, {headers}) => {
+  return prepareHeaders(headers);
 });
 
 export const client = new ApolloClient({
-  link: concat(authMiddleware, httpLink),
+  link: from([authMiddleware, httpLink]),
   cache,
+  connectToDevTools: true,
   defaultOptions: {
     query: {
       fetchPolicy: 'network-only',
