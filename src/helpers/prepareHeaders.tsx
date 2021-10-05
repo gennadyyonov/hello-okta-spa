@@ -1,5 +1,5 @@
 import {getAccessToken} from './environmentConfig';
-import Cookies from 'js-cookie';
+import {getCsrfToken} from './getCsrfToken';
 
 interface PrepareHeadersReturn {
   headers: string[][];
@@ -13,7 +13,7 @@ export const prepareHeaders = (headers): PrepareHeadersReturn => {
   if (token) {
     context.headers['Authorization'] = `${token.tokenType} ${token.accessToken}`;
   }
-  const csrfToken = Cookies.get('XSRF-TOKEN');
+  const csrfToken = getCsrfToken();
   if (csrfToken) {
     context.headers['X-XSRF-TOKEN'] = csrfToken;
   }
