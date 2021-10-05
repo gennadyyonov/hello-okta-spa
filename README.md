@@ -20,6 +20,7 @@ Assuming you already have `npm` installed, install `yarn` globally by running `n
 * `yarn start` - starts dev server at `http://localhost:3000` with HMR and all the magic to view it in the browser. 
 * `yarn test` - runs Jest tests in interactive watch mode. More reading in the section [running tests](https://facebook.github.io/create-react-app/docs/running-tests).
 * `yarn build` - builds the app for production to the `build` folder. See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* [Update all the Node.js dependencies to their latest version](https://nodejs.dev/learn/update-all-the-nodejs-dependencies-to-their-latest-version)
 
 ## Programming Language
 
