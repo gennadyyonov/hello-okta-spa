@@ -7,6 +7,7 @@ import {environmentConfig} from 'helpers/environmentConfig';
 import {initTranslations} from 'helpers/initTranslations';
 import React, {lazy, Suspense} from 'react';
 import {Route, Switch, useHistory} from 'react-router-dom';
+import {initCsrfInfo} from '../csrf/initCsrfInfo';
 
 const LazyHomeConnected = lazy(() =>
   import('components/Home/HomeConnected').then(({HomeConnected}) => ({default: HomeConnected}))
@@ -24,6 +25,7 @@ const withTranslations = Component =>
     };
 
     async componentDidMount() {
+      await initCsrfInfo();
       await initTranslations();
       this.setState({initialized: true});
     }
