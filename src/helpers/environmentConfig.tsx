@@ -1,9 +1,5 @@
 import {OktaAuth} from '@okta/okta-auth-js';
 import {fetchEnvironmentConfig} from 'helpers/fetchEnvironmentConfig';
-import {Config} from "./config";
-import {prepareHeaders} from './prepareHeaders';
-
-export const logoutUrl = Config.nodeEnv === 'production' ? '/bff/logout' : Config.logoutUrl;
 
 export interface AccessToken {
   tokenType: string;
@@ -12,17 +8,19 @@ export interface AccessToken {
 
 interface EnvironmentConfig {
   oktaAuth?: OktaAuth;
+  csrfEnabled: boolean;
 }
 
-export const environmentConfig: EnvironmentConfig = {};
+export const environmentConfig: EnvironmentConfig = {csrfEnabled: false};
 
 export const initEnvironment = async () => {
-  const {oktaClientId, oktaIssuer} = await fetchEnvironmentConfig();
+  const {oktaClientId, oktaIssuer, csrfEnabled} = await fetchEnvironmentConfig();
   environmentConfig.oktaAuth = new OktaAuth({
     issuer: oktaIssuer,
     redirectUri: window.location.origin + '/implicit/callback',
     clientId: oktaClientId,
   });
+  environmentConfig.csrfEnabled = csrfEnabled;
 };
 
 export const getAccessToken = (): AccessToken | null => {
@@ -33,17 +31,9 @@ export const getAccessToken = (): AccessToken | null => {
   return accessToken ? {tokenType: 'Bearer', accessToken: accessToken} : null;
 };
 
-const logoutFromApp = async () => {
-  const context = prepareHeaders({});
-  await fetch(logoutUrl || '', {
-    method: 'POST', credentials: 'include', headers: context.headers
-  });
-};
-
 export const logout = async () => {
   if (!environmentConfig.oktaAuth) {
     return;
   }
-  await logoutFromApp();
   await environmentConfig.oktaAuth.signOut({postLogoutRedirectUri: window.location.origin + '/'});
 };
