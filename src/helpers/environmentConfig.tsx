@@ -19,6 +19,7 @@ export const initEnvironment = async () => {
     issuer: oktaIssuer,
     redirectUri: window.location.origin + '/implicit/callback',
     clientId: oktaClientId,
+    scopes: ['email', 'profile', 'openid'],
   });
   environmentConfig.csrfEnabled = csrfEnabled;
 };
