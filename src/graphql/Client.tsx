@@ -3,7 +3,7 @@ import {setContext} from '@apollo/client/link/context';
 import {Config} from "../helpers/config";
 import {prepareHeaders} from '../helpers/prepareHeaders';
 
-const backendGQLUri = Config.nodeEnv === 'production' ? '/bff/graphql' : Config.bffUrl;
+const backendGQLUri = Config.baseUrl + '/bff/graphql';
 
 const httpLink = createHttpLink({
   uri: backendGQLUri,
