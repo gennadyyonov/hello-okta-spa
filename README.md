@@ -39,6 +39,16 @@ Assuming you already have `npm` installed, install `yarn` globally by running `n
 * [GraphQL Tag](https://github.com/apollographql/graphql-tag)
 * [Material UI](https://material-ui.com/)
 
+## Run Application on localhost
+
+* Copy [`.env.development.sample`](.env.development.sample) to `.env.development`
+* Fill in your configuration properties instead of `???`
+    
+    `BASE_URL` variable examples:
+    * Localhost `BASE_URL=http://localhost:8060/`
+    * K8s `BASE_URL=https://kubernetes.docker.internal/`
+* Run `yarn start`
+
 ## IE11 Compatibility
 
 ### Issue

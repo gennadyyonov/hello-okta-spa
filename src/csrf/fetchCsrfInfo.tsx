@@ -1,7 +1,7 @@
 import {Config} from '../helpers/config';
 import {addAuthorizationHeader} from '../helpers/prepareHeaders';
 
-export const csrfTokenInfoUrl = Config.nodeEnv === 'production' ? '/bff/config/csrfTokenInfo' : Config.csrfTokenInfoUrl;
+export const csrfTokenInfoUrl = Config.baseUrl + '/bff/config/csrfTokenInfo';
 
 export const fetchCsrfInfo = async () => {
   const headers = {
