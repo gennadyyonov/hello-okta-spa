@@ -1,5 +1,4 @@
-import Alert from '@mui/lab/Alert';
-import { Box } from '@mui/material';
+import { Alert, Box } from '@mui/material';
 import Button from '@mui/material/Button';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
