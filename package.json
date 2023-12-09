@@ -12,10 +12,6 @@
     "@mui/styles": "^5.14.20",
     "@okta/okta-auth-js": "^5.5.0",
     "@okta/okta-react": "6.2.0",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.2.1",
-    "@types/jest": "^27.0.2",
     "@types/node": "^16.10.2",
     "@types/react": "^17.0.27",
     "@types/react-dom": "^17.0.9",
@@ -40,7 +36,6 @@
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts --openssl-legacy-provider build",
-    "test": "react-scripts --openssl-legacy-provider test",
     "eject": "react-scripts --openssl-legacy-provider eject"
   },
   "eslintConfig": {
