@@ -1,8 +1,8 @@
-import {pingThunk} from 'actions/pingThunk';
-import {connect} from 'react-redux';
-import {AppState} from 'reducers';
-import {MessageState} from 'reducers/message';
-import {compose} from 'redux';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { pingThunk } from '../../actions/pingThunk';
+import { AppState } from '../../reducers';
+import { MessageState } from '../../reducers/message';
 import Home from './Home';
 
 interface MapStateToProps extends Pick<MessageState, 'text'> {
@@ -33,5 +33,5 @@ const mergeProps = ({text}: MapStateToProps, {doPing}: MapDispatchToProps): Home
 };
 
 export const HomeConnected = compose(
-  connect<MapStateToProps, MapDispatchToProps, {}, HomeProps, AppState>(mapStateToProps, mapDispatchToProps, mergeProps)
+  connect<MapStateToProps, MapDispatchToProps, object, HomeProps, AppState>(mapStateToProps, mapDispatchToProps, mergeProps)
 )(Home);

@@ -1,5 +1,5 @@
-import {Action} from 'actions/action';
-import {ActionTypes} from 'actions/actionTypes';
+import { Action } from '../../actions/action';
+import { ActionTypes } from '../../actions/actionTypes';
 
 interface UserInfoAction extends Action<UserInfoState> {
 }

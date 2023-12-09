@@ -3,45 +3,42 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@apollo/client": "^3.4.16",
-    "@material-ui/core": "4.12.3",
-    "@material-ui/icons": "4.11.2",
-    "@material-ui/lab": "4.0.0-alpha.60",
-    "@okta/okta-auth-js": "^5.5.0",
-    "@okta/okta-react": "6.2.0",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.2.1",
-    "@types/jest": "^27.0.2",
-    "@types/node": "^16.10.2",
-    "@types/react": "^17.0.27",
-    "@types/react-dom": "^17.0.9",
-    "@types/react-redux": "^7.1.18",
-    "@types/react-router-dom": "^5.3.0",
+    "@apollo/client": "^3.8.8",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.19",
+    "@mui/lab": "^5.0.0-alpha.155",
+    "@mui/material": "^5.14.20",
+    "@okta/okta-auth-js": "^7.5.0",
+    "@okta/okta-react": "6.7.0",
+    "@types/node": "^20.10.4",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@types/react-redux": "^7.1.32",
+    "@types/react-router-dom": "^5.3.3",
     "@types/redux": "^3.6.31",
-    "graphql": "^15.6.1",
-    "http-proxy-middleware": "^2.0.1",
-    "js-cookie": "^3.0.1",
-    "minimist": "1.2.5",
-    "react": "^17.0.2",
-    "react-app-polyfill": "^2.0.0",
-    "react-dom": "^17.0.2",
-    "react-redux": "^7.2.5",
-    "react-router": "^5.2.1",
-    "react-router-dom": "^5.3.0",
-    "react-scripts": "4.0.3",
+    "@vitejs/plugin-react": "^4.2.1",
+    "browserslist-to-esbuild": "^1.2.0",
+    "graphql": "^16.8.1",
+    "js-cookie": "^3.0.5",
+    "minimist": "1.2.8",
+    "react": "^18.2.0",
+    "react-app-polyfill": "^3.0.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^7.2.9",
+    "react-router": "^5.3.4",
+    "react-router-dom": "^5.3.4",
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
-    "typescript": "4.4.3"
+    "typescript": "5.3.3",
+    "vite": "^5.0.7",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-tsconfig-paths": "^4.2.2"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts --openssl-legacy-provider build",
-    "test": "react-scripts --openssl-legacy-provider test",
-    "eject": "react-scripts --openssl-legacy-provider eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "start": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "browserslist": {
     "production": [
@@ -55,5 +52,13 @@
       "last 1 safari version",
       "ie 11"
     ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/parser": "^6.13.2",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5"
   }
 }

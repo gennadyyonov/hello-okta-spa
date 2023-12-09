@@ -1,8 +1,8 @@
-import {connect} from 'react-redux';
-import {AppState} from 'reducers';
-import {UserInfoState} from 'reducers/userInfo';
-import {compose} from 'redux';
-import {ProfileItem} from './ProfileItem';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { AppState } from '../../reducers';
+import { UserInfoState } from '../../reducers/userInfo';
+import { ProfileItem } from './ProfileItem';
 
 interface MapStateToProps extends Pick<UserInfoState, 'userId' | 'firstName' | 'lastName'> {
 }
@@ -31,5 +31,5 @@ const mergeProps = ({userId, firstName, lastName}: MapStateToProps): ProfileItem
 });
 
 export const ProfileItemConnected = compose(
-  connect<MapStateToProps, {}, {}, ProfileItemProps, AppState>(mapStateToProps, null, mergeProps)
+  connect<MapStateToProps, object, object, ProfileItemProps, AppState>(mapStateToProps, null, mergeProps)
 )(ProfileItem);

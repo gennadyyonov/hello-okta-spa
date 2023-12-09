@@ -1,5 +1,5 @@
-import {OktaAuth} from '@okta/okta-auth-js';
-import {fetchEnvironmentConfig} from 'helpers/fetchEnvironmentConfig';
+import { OktaAuth } from '@okta/okta-auth-js';
+import { fetchEnvironmentConfig } from './fetchEnvironmentConfig';
 
 export interface AccessToken {
   tokenType: string;

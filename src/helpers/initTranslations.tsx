@@ -1,7 +1,7 @@
-import {client} from 'graphql/Client';
-import {translationMap} from 'graphql/queries/translationMap';
-import {parseTranslations} from 'helpers/parseTranslations';
-import {translationSingleton} from 'i18n/i18n';
+import { client } from '../graphql/Client';
+import { translationMap } from '../graphql/queries/translationMap';
+import { translationSingleton } from '../i18n/i18n';
+import { parseTranslations } from './parseTranslations';
 
 interface InitTranslations {
   translationMap: TranslationsMap;

@@ -1,15 +1,17 @@
-import {CircularProgress} from '@material-ui/core';
-import {initEnvironment} from 'helpers/environmentConfig';
+import { CircularProgress } from '@mui/material';
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {App} from 'App/App';
+import * as ReactDOMClient from 'react-dom/client';
+import { initEnvironment } from '../helpers/environmentConfig';
+import { App } from './App';
 
-const root = document.getElementById('root');
+const container = document.getElementById('root');
 
-ReactDOM.render(<CircularProgress/>, root);
+const root = ReactDOMClient.createRoot(container!);
+
+root.render(<CircularProgress/>);
 
 (async () => {
   await initEnvironment();
 
-  ReactDOM.render(<App/>, root);
+  root.render(<App/>);
 })();
