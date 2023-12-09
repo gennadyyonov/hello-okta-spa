@@ -1,8 +1,7 @@
 import Paper from '@mui/material/Paper';
 import React, { ReactNode } from 'react';
 
-// @ts-ignore
-const AppWrapper: React.FC<{ children?: ReactNode }> = ({ children, classes }) => (
+const AppWrapper: React.FC<{ children?: ReactNode }> = ({ children }) => (
   <Paper
     sx={{
       margin: '20px',

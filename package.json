@@ -9,14 +9,16 @@
     "@mui/icons-material": "^5.14.19",
     "@mui/lab": "^5.0.0-alpha.155",
     "@mui/material": "^5.14.20",
-    "@okta/okta-auth-js": "^5.5.0",
-    "@okta/okta-react": "6.2.0",
+    "@okta/okta-auth-js": "^7.5.0",
+    "@okta/okta-react": "6.7.0",
     "@types/node": "^20.10.4",
     "@types/react": "^17.0.71",
     "@types/react-dom": "^17.0.25",
     "@types/react-redux": "^7.1.32",
     "@types/react-router-dom": "^5.3.3",
     "@types/redux": "^3.6.31",
+    "@vitejs/plugin-react": "^4.2.1",
+    "browserslist-to-esbuild": "^1.2.0",
     "graphql": "^16.8.1",
     "http-proxy-middleware": "^2.0.1",
     "js-cookie": "^3.0.1",
@@ -27,18 +29,17 @@
     "react-redux": "^7.2.9",
     "react-router": "^5.3.4",
     "react-router-dom": "^5.3.4",
-    "react-scripts": "4.0.3",
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
-    "typescript": "4.4.3"
+    "typescript": "4.4.3",
+    "vite": "^5.0.7",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-tsconfig-paths": "^4.2.2"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts --openssl-legacy-provider build",
-    "eject": "react-scripts --openssl-legacy-provider eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "start": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "browserslist": {
     "production": [
@@ -52,5 +53,13 @@
       "last 1 safari version",
       "ie 11"
     ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/parser": "^6.13.2",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5"
   }
 }

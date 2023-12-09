@@ -1,9 +1,9 @@
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import { meThunk } from 'actions/meThunk';
-import { ProfileItemConnected } from 'components/ProfileItem/ProfileItemConnected';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { meThunk } from '../../actions/meThunk';
+import { ProfileItemConnected } from '../ProfileItem/ProfileItemConnected';
 
 export const AppHeader: React.FC = () => {
   const dispatch = useDispatch();

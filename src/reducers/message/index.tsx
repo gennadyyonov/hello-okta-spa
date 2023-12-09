@@ -1,5 +1,5 @@
-import {Action} from 'actions/action';
-import {ActionTypes} from 'actions/actionTypes';
+import { Action } from '../../actions/action';
+import { ActionTypes } from '../../actions/actionTypes';
 
 interface MessageAction extends Action<MessageState | PingState> {
 }
@@ -19,9 +19,8 @@ export const messageReducer = (state: MessageState = defaultMessageState, action
     case ActionTypes.HELLO_ACTION:
       return action.payload as MessageState;
     case ActionTypes.PING_ACTION:
-      const text = action.payload as PingState;
       return {
-        text
+        text: action.payload as PingState,
       };
     default:
       return state;

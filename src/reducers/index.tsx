@@ -1,6 +1,6 @@
-import {defaultMessageState, messageReducer, MessageState} from 'reducers/message';
-import {defaultUserInfoState, userInfoReducer, UserInfoState} from 'reducers/userInfo';
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
+import { defaultMessageState, messageReducer, MessageState } from './message';
+import { defaultUserInfoState, userInfoReducer, UserInfoState } from './userInfo';
 
 export interface AppState {
   message: MessageState;
