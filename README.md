@@ -12,14 +12,21 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Dependency Management
 
-Dependencies are managed by [yarn](https://yarnpkg.com/en/)  
-Assuming you already have `npm` installed, install `yarn` globally by running `npm install -g yarn`  
+Dependencies are managed by [npm](https://docs.npmjs.com/)  
+[Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+```
+node -v
+v18.15.0
+
+npm -v
+9.6.3
+```
 
 ### Available Scripts
 
-* `yarn start` - starts dev server at `http://localhost:3000` with HMR and all the magic to view it in the browser. 
-* `yarn test` - runs Jest tests in interactive watch mode. More reading in the section [running tests](https://facebook.github.io/create-react-app/docs/running-tests).
-* `yarn build` - builds the app for production to the `build` folder. See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* `npm start` - starts dev server at `http://localhost:3000` with HMR and all the magic to view it in the browser. 
+* `npm run test` - runs Jest tests in interactive watch mode. More reading in the section [running tests](https://facebook.github.io/create-react-app/docs/running-tests).
+* `npm run build` - builds the app for production to the `build` folder. See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 * [Update all the Node.js dependencies to their latest version](https://nodejs.dev/learn/update-all-the-nodejs-dependencies-to-their-latest-version)
 
 ## Programming Language
@@ -47,7 +54,7 @@ Assuming you already have `npm` installed, install `yarn` globally by running `n
     `BASE_URL` variable examples:
     * Localhost `BASE_URL=http://localhost:8060/`
     * K8s `BASE_URL=https://kubernetes.docker.internal/`
-* Run `yarn start`
+* Run `npm start`
 
 ## IE11 Compatibility
 
@@ -82,6 +89,6 @@ docker-compose -f docker-compose-development.yml up web
 ```
 **Note**, application should be built first using the following command:
 ```
-yarn install
-yarn build
+npm install
+npm run build
 ```
