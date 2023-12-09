@@ -9,7 +9,6 @@
     "@mui/icons-material": "^5.14.19",
     "@mui/lab": "^5.0.0-alpha.155",
     "@mui/material": "^5.14.20",
-    "@mui/styles": "^5.14.20",
     "@okta/okta-auth-js": "^5.5.0",
     "@okta/okta-react": "6.2.0",
     "@types/node": "^16.10.2",
