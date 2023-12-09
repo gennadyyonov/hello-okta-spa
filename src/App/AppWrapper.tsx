@@ -5,8 +5,8 @@ import React, { ReactNode } from 'react';
 const AppWrapper: React.FC<{ children?: ReactNode }> = ({ children, classes }) => (
   <Paper
     sx={{
-      margin: 20,
-      padding: 20,
+      margin: '20px',
+      padding: '20px',
       width: 400,
       height: 400
     }}
