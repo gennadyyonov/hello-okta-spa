@@ -1,8 +1,8 @@
-import {CircularProgress} from '@material-ui/core';
-import {initEnvironment} from 'helpers/environmentConfig';
+import { CircularProgress } from '@mui/material';
+import { App } from 'App/App';
+import { initEnvironment } from 'helpers/environmentConfig';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {App} from 'App/App';
 
 const root = document.getElementById('root');
 

@@ -1,6 +1,6 @@
-import {WithStyles, withStyles} from '@material-ui/core';
-import Paper from '@material-ui/core/Paper';
-import React, {ReactNode} from 'react';
+import { WithStyles, withStyles } from '@mui/styles';
+import Paper from '@mui/material/Paper';
+import React, { ReactNode } from 'react';
 
 const styles = {
   root: {
@@ -11,6 +11,7 @@ const styles = {
   }
 };
 
+// @ts-ignore
 const AppWrapper: React.FC<{ children?: ReactNode } & WithStyles> = ({ children, classes }) => (
   <Paper className={classes.root} elevation={3}>
     {children}

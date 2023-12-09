@@ -1,13 +1,13 @@
-import {CircularProgress} from '@material-ui/core';
-import {toRelativeUrl} from '@okta/okta-auth-js';
-import {LoginCallback, SecureRoute, Security} from '@okta/okta-react';
+import { CircularProgress } from '@mui/material';
+import { toRelativeUrl } from '@okta/okta-auth-js';
+import { LoginCallback, SecureRoute, Security } from '@okta/okta-react';
 import AppWrapper from 'App/AppWrapper';
-import {AppHeader} from 'components/AppHeader/AppHeader';
-import {environmentConfig} from 'helpers/environmentConfig';
-import {initTranslations} from 'helpers/initTranslations';
-import React, {lazy, Suspense} from 'react';
-import {Route, Switch, useHistory} from 'react-router-dom';
-import {initCsrfInfo} from '../csrf/initCsrfInfo';
+import { AppHeader } from 'components/AppHeader/AppHeader';
+import { environmentConfig } from 'helpers/environmentConfig';
+import { initTranslations } from 'helpers/initTranslations';
+import React, { lazy, Suspense } from 'react';
+import { Route, Switch, useHistory } from 'react-router-dom';
+import { initCsrfInfo } from '../csrf/initCsrfInfo';
 
 const LazyHomeConnected = lazy(() =>
   import('components/Home/HomeConnected').then(({HomeConnected}) => ({default: HomeConnected}))

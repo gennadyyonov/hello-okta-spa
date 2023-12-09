@@ -1,13 +1,13 @@
-import {Box} from '@material-ui/core';
-import Button from '@material-ui/core/Button';
-import Alert from '@material-ui/lab/Alert';
-import React, {useEffect} from 'react';
-import {useDispatch} from 'react-redux';
-import {helloThunk} from 'actions/helloThunk';
-import {AuthType} from 'graphql/queries/hello';
-import {i18n} from 'i18n/i18n';
-import {HomeProps} from './HomeConnected';
-import {Logout} from "components/Logout/Logout";
+import Alert from '@mui/lab/Alert';
+import { Box } from '@mui/material';
+import Button from '@mui/material/Button';
+import { helloThunk } from 'actions/helloThunk';
+import { Logout } from "components/Logout/Logout";
+import { AuthType } from 'graphql/queries/hello';
+import { i18n } from 'i18n/i18n';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { HomeProps } from './HomeConnected';
 
 const Home: React.FC<HomeProps> = (props) => {
   const dispatch = useDispatch();
