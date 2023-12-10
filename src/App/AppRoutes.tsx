@@ -1,13 +1,14 @@
 import { CircularProgress } from '@mui/material';
 import { toRelativeUrl } from '@okta/okta-auth-js';
-import { LoginCallback, SecureRoute, Security } from '@okta/okta-react';
-import React, { lazy, Suspense } from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { LoginCallback, Security } from '@okta/okta-react';
+import React, { Suspense, lazy } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { AppHeader } from '../components/AppHeader/AppHeader';
 import { initCsrfInfo } from '../csrf/initCsrfInfo';
 import { environmentConfig } from '../helpers/environmentConfig';
 import { initTranslations } from '../helpers/initTranslations';
 import AppWrapper from './AppWrapper';
+import { RequiredAuth } from './RequiredAuth';
 
 const LazyHomeConnected = lazy(() =>
   import('../components/Home/HomeConnected').then(({ HomeConnected }) => ({ default: HomeConnected }))
@@ -27,20 +28,20 @@ const withTranslations = Component =>
     async componentDidMount() {
       await initCsrfInfo();
       await initTranslations();
-      this.setState({initialized: true});
+      this.setState({ initialized: true });
     }
 
     render() {
-      const {initialized} = this.state;
+      const { initialized } = this.state;
       if (!initialized) {
-        return <CircularProgress/>;
+        return <CircularProgress />;
       }
-      const {...props} = this.props;
+      const { ...props } = this.props;
       return (
         <>
           <AppWrapper>
-            <AppHeader/>
-            <Suspense fallback={<CircularProgress/>}>
+            <AppHeader />
+            <Suspense fallback={<CircularProgress />}>
               <Component {...props} />
             </Suspense>
           </AppWrapper>
@@ -49,21 +50,25 @@ const withTranslations = Component =>
     }
   };
 
+const Home = withTranslations(LazyHomeConnected);
+
 export const AppRoutes: React.FC = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const restoreOriginalUri = async (_oktaAuth, originalUri) => {
-    history.replace(toRelativeUrl(originalUri, window.location.origin));
+    navigate(toRelativeUrl(originalUri, window.location.origin));
   };
-  const {oktaAuth} = environmentConfig;
+  const { oktaAuth } = environmentConfig;
   if (!oktaAuth) {
     return null;
   }
   return (
     <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
-      <Switch>
-        <SecureRoute exact path="/" component={withTranslations(LazyHomeConnected)}/>
-        <Route exact path='/implicit/callback' component={LoginCallback}/>
-      </Switch>
+      <Routes>
+        <Route path='/implicit/callback' element={<LoginCallback />} />
+        <Route path="/" element={<RequiredAuth />}>
+          <Route path="" element={<Home />} />
+        </Route>
+      </Routes>
     </Security>
   );
 };
