@@ -1,23 +1,21 @@
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { meThunk } from '../../actions/meThunk';
+import { useAppDispatch } from '../../App/hooks';
+import { meThunk } from '../../features/userInfo/userInfoSlice';
 import { ProfileItemConnected } from '../ProfileItem/ProfileItemConnected';
 
 export const AppHeader: React.FC = () => {
-  const dispatch = useDispatch();
-  useEffect(
-    () => {
-      dispatch(meThunk());
-    },
-    // eslint-disable-next-line
-    [],
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(meThunk());
+  },
+    [dispatch],
   );
   return (
     <AppBar position="static">
       <Toolbar>
-        <ProfileItemConnected/>
+        <ProfileItemConnected />
       </Toolbar>
     </AppBar>
   )

@@ -1,5 +1,0 @@
-export enum ActionTypes {
-  PING_ACTION = 'PING_ACTION',
-  USER_INFO_ACTION = 'USER_INFO_ACTION',
-  HELLO_ACTION = 'HELLO_ACTION',
-}
