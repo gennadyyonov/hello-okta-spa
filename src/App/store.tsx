@@ -1,5 +1,16 @@
-import { applyMiddleware, createStore } from 'redux';
-import thunk from "redux-thunk";
-import { defaultState, rootReducer } from '../reducers';
+import { combineReducers, configureStore, } from '@reduxjs/toolkit';
+import message from '../features/message/messageSlice';
+import userInfo from '../features/userInfo/userInfoSlice';
 
-export const store = createStore(rootReducer, defaultState, applyMiddleware(thunk));
+const rootReducer = combineReducers({
+  message,
+  userInfo,
+});
+
+export const store = configureStore({
+  reducer: rootReducer,
+});
+
+export type RootState = ReturnType<typeof store.getState>;
+
+export type AppDispatch = typeof store.dispatch;

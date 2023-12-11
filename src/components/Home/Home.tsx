@@ -1,23 +1,21 @@
 import { Alert, Box } from '@mui/material';
 import Button from '@mui/material/Button';
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { helloThunk } from '../../actions/helloThunk';
+import { useAppDispatch } from '../../App/hooks';
+import { helloThunk } from '../../features/message/messageSlice';
 import { AuthType } from '../../graphql/queries/hello';
 import { i18n } from '../../i18n/i18n';
 import { Logout } from "../Logout/Logout";
 import { HomeProps } from './HomeConnected';
 
 const Home: React.FC<HomeProps> = (props) => {
-  const dispatch = useDispatch();
-  useEffect(
-    () => {
-      dispatch(helloThunk(AuthType.USER));
-    },
-    // eslint-disable-next-line
-    [],
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(helloThunk(AuthType.USER));
+  },
+    [dispatch],
   );
-  const {message, onPing} = props;
+  const { message, onPing } = props;
   return (
     <Box>
       <Box pt={4}>
@@ -35,7 +33,7 @@ const Home: React.FC<HomeProps> = (props) => {
         <Alert severity="warning">{i18n('logout_hint')}</Alert>
       </Box>
       <Box pt={2}>
-        <Logout/>
+        <Logout />
       </Box>
     </Box>
   )
