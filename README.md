@@ -16,10 +16,10 @@ Dependencies are managed by [npm](https://docs.npmjs.com/)
 [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 ```
 node -v
-v18.15.0
+v20.10.0
 
 npm -v
-9.6.3
+10.2.3
 ```
 
 ### Available Scripts
