@@ -13,7 +13,7 @@
     "@okta/okta-auth-js": "7.5.0",
     "@okta/okta-react": "6.7.0",
     "@reduxjs/toolkit": "2.0.1",
-    "@types/node": "20.10.4",
+    "@types/node": "20.17.28",
     "@types/react": "18.3.20",
     "@types/react-dom": "18.3.5",
     "@types/react-router-dom": "5.3.3",
