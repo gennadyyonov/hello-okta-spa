@@ -1,6 +1,6 @@
 import { useOktaAuth } from '@okta/okta-react';
 import React, { useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router';
 import { environmentConfig } from '../helpers/environmentConfig';
 
 export const RequiredAuth: React.FC = () => {

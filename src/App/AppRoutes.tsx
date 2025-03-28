@@ -2,7 +2,7 @@ import { CircularProgress } from '@mui/material';
 import { toRelativeUrl } from '@okta/okta-auth-js';
 import { LoginCallback, Security } from '@okta/okta-react';
 import React, { Suspense, lazy } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router';
 import { AppHeader } from '../components/AppHeader/AppHeader';
 import { initCsrfInfo } from '../csrf/initCsrfInfo';
 import { environmentConfig } from '../helpers/environmentConfig';
