@@ -1,6 +1,6 @@
 export type Translations = {
   [key: string]: string;
-}
+};
 
 interface TranslationSingleton {
   entries: Translations;
@@ -14,7 +14,7 @@ export const translationSingleton: TranslationSingleton = {
   init(translations: Translations) {
     this.entries = translations;
     this.initialized = true;
-  }
+  },
 };
 
 export const i18n = (key: string, ...replacements: string[]): string => {

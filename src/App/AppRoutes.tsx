@@ -11,18 +11,17 @@ import AppWrapper from './AppWrapper';
 import { RequiredAuth } from './RequiredAuth';
 
 const LazyHomeConnected = lazy(() =>
-  import('../components/Home/HomeConnected').then(({ HomeConnected }) => ({ default: HomeConnected }))
+  import('../components/Home/HomeConnected').then(({ HomeConnected }) => ({ default: HomeConnected })),
 );
 
 interface TranslationState {
   initialized: boolean;
 }
 
-const withTranslations = Component =>
+const withTranslations = (Component) =>
   class extends React.PureComponent<unknown, TranslationState> {
-
     state: TranslationState = {
-      initialized: false
+      initialized: false,
     };
 
     async componentDidMount() {
@@ -64,7 +63,7 @@ export const AppRoutes: React.FC = () => {
   return (
     <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
       <Routes>
-        <Route path='/implicit/callback' element={<LoginCallback />} />
+        <Route path="/implicit/callback" element={<LoginCallback />} />
         <Route path="/" element={<RequiredAuth />}>
           <Route path="" element={<Home />} />
         </Route>

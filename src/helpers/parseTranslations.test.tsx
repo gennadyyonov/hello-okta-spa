@@ -17,8 +17,8 @@ describe('parseTranslations', () => {
     const actual = parseTranslations(translationEntries);
 
     expect(actual).toStrictEqual({
-      'home_button_ping': 'Ping',
-      'button_logout': 'Logout',
+      home_button_ping: 'Ping',
+      button_logout: 'Logout',
     });
   });
 });

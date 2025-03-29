@@ -1,7 +1,7 @@
-import {gql} from '@apollo/client';
+import { gql } from '@apollo/client';
 
 export const ping = gql`
-    query {
-        ping
-    }
+  query {
+    ping
+  }
 `;

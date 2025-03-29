@@ -1,33 +1,33 @@
 type Query {
-    ping: String
-    me: UserInfo
-    hello(authType: AuthType): Message
-    translationMap: TranslationMap
+  ping: String
+  me: UserInfo
+  hello(authType: AuthType): Message
+  translationMap: TranslationMap
 }
 
 type UserInfo {
-    userId: ID,
-    firstName: String,
-    lastName: String,
-    email: String,
-    roles: [String]
+  userId: ID
+  firstName: String
+  lastName: String
+  email: String
+  roles: [String]
 }
 
 enum AuthType {
-    USER
-    CLIENT
+  USER
+  CLIENT
 }
 
 type Message {
-    text: String
+  text: String
 }
 
 type TranslationMap {
-    locale: String
-    entries: [TranslationMapEntry]
+  locale: String
+  entries: [TranslationMapEntry]
 }
 
 type TranslationMapEntry {
-    key: String
-    value: String
+  key: String
+  value: String
 }

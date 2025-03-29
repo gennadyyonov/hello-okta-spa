@@ -19,5 +19,5 @@ export const csrfInfoSingleton: CsrfInfoSingleton = {
   init(csrfInfo: CsrfInfo) {
     this.csrfInfo = csrfInfo;
     this.initialized = true;
-  }
+  },
 };

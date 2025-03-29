@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
-import {csrfInfoSingleton} from '../csrf/csrf';
-import {environmentConfig, getAccessToken} from './environmentConfig';
+import { csrfInfoSingleton } from '../csrf/csrf';
+import { environmentConfig, getAccessToken } from './environmentConfig';
 
 interface PrepareHeadersReturn {
   headers: string[][];
@@ -8,7 +8,7 @@ interface PrepareHeadersReturn {
 
 export const prepareHeaders = (headers): PrepareHeadersReturn => {
   const context = {
-    headers: {...headers},
+    headers: { ...headers },
   };
   addAuthorizationHeader(context.headers);
   addCsrfToken(context.headers);
@@ -26,7 +26,7 @@ export const addCsrfToken = (headers): void => {
   if (!environmentConfig.csrfEnabled) {
     return;
   }
-  const {csrfInfo} = csrfInfoSingleton;
+  const { csrfInfo } = csrfInfoSingleton;
   const csrfToken = Cookies.get(csrfInfo.cookieName!);
   if (csrfToken) {
     headers[csrfInfo.headerName!] = csrfToken;

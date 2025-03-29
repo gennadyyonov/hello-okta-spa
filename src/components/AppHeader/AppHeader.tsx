@@ -9,14 +9,12 @@ export const AppHeader: React.FC = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(meThunk());
-  },
-    [dispatch],
-  );
+  }, [dispatch]);
   return (
     <AppBar position="static">
       <Toolbar>
         <ProfileItemConnected />
       </Toolbar>
     </AppBar>
-  )
+  );
 };

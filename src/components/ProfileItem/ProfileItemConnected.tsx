@@ -4,8 +4,7 @@ import { RootState } from '../../App/store';
 import { UserInfoState } from '../../features/userInfo';
 import { ProfileItem } from './ProfileItem';
 
-interface MapStateToProps extends Pick<UserInfoState, 'userId' | 'firstName' | 'lastName'> {
-}
+interface MapStateToProps extends Pick<UserInfoState, 'userId' | 'firstName' | 'lastName'> {}
 
 export interface ProfileItemProps {
   userId?: string;
@@ -15,11 +14,7 @@ export interface ProfileItemProps {
 
 const mapStateToProps = (state) => {
   const {
-    userInfo: {
-      userId,
-      firstName,
-      lastName,
-    }
+    userInfo: { userId, firstName, lastName },
   } = state;
   return { userId, firstName, lastName };
 };
@@ -27,9 +22,9 @@ const mapStateToProps = (state) => {
 const mergeProps = ({ userId, firstName, lastName }: MapStateToProps): ProfileItemProps => ({
   userId,
   firstName,
-  lastName
+  lastName,
 });
 
 export const ProfileItemConnected = compose(
-  connect<MapStateToProps, object, object, ProfileItemProps, RootState>(mapStateToProps, null, mergeProps)
+  connect<MapStateToProps, object, object, ProfileItemProps, RootState>(mapStateToProps, null, mergeProps),
 )(ProfileItem);

@@ -1,5 +1,5 @@
-import {Config} from '../helpers/config';
-import {addAuthorizationHeader} from '../helpers/prepareHeaders';
+import { Config } from '../helpers/config';
+import { addAuthorizationHeader } from '../helpers/prepareHeaders';
 
 export const csrfTokenInfoUrl = Config.baseUrl + '/bff/config/csrfTokenInfo';
 
