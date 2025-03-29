@@ -42,5 +42,33 @@ export default defineConfig(({ mode }) => {
       // --> ["chrome79", "edge92", "firefox91", "safari13.1"]
       target: browserslistToEsbuild(['>0.2%', 'not dead', 'not op_mini all']),
     },
+    // https://vitest.dev/config/
+    test: {
+      globals: true,
+      environment: 'happy-dom',
+      setupFiles: ['./src/setupTests.ts', './src/setupStylesTests.ts'],
+      testTimeout: 10000,
+      mockReset: true,
+      coverage: {
+        enabled: false,
+        thresholds: {
+          branches: 20,
+          functions: 18,
+          lines: 1,
+          statements: 1,
+        },
+        include: ['src/**/*.tsx'],
+        exclude: [
+          'src/tests/**',
+          '**/node_modules/**',
+          '**/dist/**',
+          '**/out/**',
+          '**/out/**',
+          'src/setupTests.ts',
+          'src/setupStylesTests.ts',
+          'src/**/*.test.tsx',
+        ],
+      },
+    },
   };
 });
