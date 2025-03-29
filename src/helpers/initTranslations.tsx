@@ -20,7 +20,11 @@ export const initTranslations = async () => {
   if (translationSingleton.initialized) {
     return;
   }
-  const {data: {translationMap: {entries}}} = await client.query<InitTranslations>({
+  const {
+    data: {
+      translationMap: { entries },
+    },
+  } = await client.query<InitTranslations>({
     query: translationMap,
   });
   translationSingleton.init(parseTranslations(entries));

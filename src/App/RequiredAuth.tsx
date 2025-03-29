@@ -21,5 +21,5 @@ export const RequiredAuth: React.FC = () => {
     return null;
   }
 
-  return (<Outlet />);
+  return <Outlet />;
 };

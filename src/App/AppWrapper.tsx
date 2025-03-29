@@ -7,7 +7,7 @@ const AppWrapper: React.FC<{ children?: ReactNode }> = ({ children }) => (
       margin: '20px',
       padding: '20px',
       width: 400,
-      height: 400
+      height: 400,
     }}
     elevation={3}
   >
@@ -15,4 +15,4 @@ const AppWrapper: React.FC<{ children?: ReactNode }> = ({ children }) => (
   </Paper>
 );
 
-export default AppWrapper
+export default AppWrapper;

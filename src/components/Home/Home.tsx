@@ -5,16 +5,14 @@ import { useAppDispatch } from '../../App/hooks';
 import { helloThunk } from '../../features/message/messageSlice';
 import { AuthType } from '../../graphql/queries/hello';
 import { i18n } from '../../i18n/i18n';
-import { Logout } from "../Logout/Logout";
+import { Logout } from '../Logout/Logout';
 import { HomeProps } from './HomeConnected';
 
 const Home: React.FC<HomeProps> = (props) => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(helloThunk(AuthType.USER));
-  },
-    [dispatch],
-  );
+  }, [dispatch]);
   const { message, onPing } = props;
   return (
     <Box>
@@ -22,10 +20,7 @@ const Home: React.FC<HomeProps> = (props) => {
         <Alert severity="info">{message}</Alert>
       </Box>
       <Box pt={2}>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={onPing}>
+        <Button variant="contained" color="primary" onClick={onPing}>
           {i18n('home_button_ping')}
         </Button>
       </Box>
@@ -36,7 +31,7 @@ const Home: React.FC<HomeProps> = (props) => {
         <Logout />
       </Box>
     </Box>
-  )
+  );
 };
 
 export default Home;

@@ -11,10 +11,10 @@ interface EnvironmentConfig {
   csrfEnabled: boolean;
 }
 
-export const environmentConfig: EnvironmentConfig = {csrfEnabled: false};
+export const environmentConfig: EnvironmentConfig = { csrfEnabled: false };
 
 export const initEnvironment = async () => {
-  const {oktaClientId, oktaIssuer, csrfEnabled} = await fetchEnvironmentConfig();
+  const { oktaClientId, oktaIssuer, csrfEnabled } = await fetchEnvironmentConfig();
   environmentConfig.oktaAuth = new OktaAuth({
     issuer: oktaIssuer,
     redirectUri: window.location.origin + '/implicit/callback',
@@ -29,12 +29,12 @@ export const getAccessToken = (): AccessToken | null => {
     return null;
   }
   const accessToken = environmentConfig.oktaAuth.getAccessToken();
-  return accessToken ? {tokenType: 'Bearer', accessToken: accessToken} : null;
+  return accessToken ? { tokenType: 'Bearer', accessToken: accessToken } : null;
 };
 
 export const logout = async () => {
   if (!environmentConfig.oktaAuth) {
     return;
   }
-  await environmentConfig.oktaAuth.signOut({postLogoutRedirectUri: window.location.origin + '/'});
+  await environmentConfig.oktaAuth.signOut({ postLogoutRedirectUri: window.location.origin + '/' });
 };

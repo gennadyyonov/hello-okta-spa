@@ -7,7 +7,7 @@ import { store } from './store';
 export const App: React.FC = () => (
   <Provider store={store}>
     <Router>
-      <AppRoutes/>
+      <AppRoutes />
     </Router>
   </Provider>
 );

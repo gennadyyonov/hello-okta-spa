@@ -5,5 +5,5 @@ export interface MessageState {
 }
 
 export const initialMessageState: MessageState = {
-  text: null
+  text: null,
 };

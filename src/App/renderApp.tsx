@@ -8,10 +8,10 @@ const container = document.getElementById('root');
 
 const root = ReactDOMClient.createRoot(container!);
 
-root.render(<CircularProgress/>);
+root.render(<CircularProgress />);
 
 (async () => {
   await initEnvironment();
 
-  root.render(<App/>);
+  root.render(<App />);
 })();

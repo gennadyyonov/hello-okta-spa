@@ -5,8 +5,7 @@ import { MessageState } from '../../features/message';
 import { pingThunk } from '../../features/message/messageSlice';
 import Home from './Home';
 
-interface MapStateToProps extends Pick<MessageState, 'text'> {
-}
+interface MapStateToProps extends Pick<MessageState, 'text'> {}
 
 interface MapDispatchToProps {
   doPing(): void;
@@ -19,9 +18,7 @@ export interface HomeProps {
 
 const mapStateToProps = (state) => {
   const {
-    message: {
-      text,
-    }
+    message: { text },
   } = state;
   return { text };
 };
@@ -29,9 +26,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = { doPing: pingThunk };
 
 const mergeProps = ({ text }: MapStateToProps, { doPing }: MapDispatchToProps): HomeProps => {
-  return { message: text, onPing: () => doPing() }
+  return { message: text, onPing: () => doPing() };
 };
 
 export const HomeConnected = compose(
-  connect<MapStateToProps, MapDispatchToProps, object, HomeProps, RootState>(mapStateToProps, mapDispatchToProps, mergeProps)
+  connect<MapStateToProps, MapDispatchToProps, object, HomeProps, RootState>(
+    mapStateToProps,
+    mapDispatchToProps,
+    mergeProps,
+  ),
 )(Home);

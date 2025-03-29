@@ -1,7 +1,7 @@
-import {ApolloClient, createHttpLink, from, InMemoryCache} from '@apollo/client';
-import {setContext} from '@apollo/client/link/context';
-import {Config} from "../helpers/config";
-import {prepareHeaders} from '../helpers/prepareHeaders';
+import { ApolloClient, createHttpLink, from, InMemoryCache } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { Config } from '../helpers/config';
+import { prepareHeaders } from '../helpers/prepareHeaders';
 
 const backendGQLUri = Config.baseUrl + '/bff/graphql';
 
@@ -12,7 +12,7 @@ const httpLink = createHttpLink({
 
 const cache = new InMemoryCache();
 
-const authMiddleware = setContext((_, {headers}) => {
+const authMiddleware = setContext((_, { headers }) => {
   return prepareHeaders(headers);
 });
 
