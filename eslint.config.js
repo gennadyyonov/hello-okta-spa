@@ -2,6 +2,7 @@ import js from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import eslintOnlyWarn from 'eslint-plugin-only-warn'
+import vitest from '@vitest/eslint-plugin';
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 
@@ -18,12 +19,14 @@ export default tseslint.config(
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
       'only-warn': eslintOnlyWarn,
+      vitest,
     },
     settings: {
       'only-warn': true,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
+      ...vitest.configs.recommended.rules,
       'react-refresh/only-export-components': [
         'warn',
         {allowConstantExport: true},
