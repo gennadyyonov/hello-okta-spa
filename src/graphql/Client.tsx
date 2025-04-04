@@ -19,7 +19,6 @@ const authMiddleware = setContext((_, { headers }) => {
 export const client = new ApolloClient({
   link: from([authMiddleware, httpLink]),
   cache,
-  connectToDevTools: true,
   defaultOptions: {
     query: {
       fetchPolicy: 'network-only',
