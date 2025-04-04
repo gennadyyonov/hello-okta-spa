@@ -3,10 +3,12 @@ import { Box } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import React from 'react';
-import { ProfileItemProps } from './ProfileItemConnected';
+import { useAppSelector } from '../../App/hooks';
+import { selectUserInfo } from '../../features/userInfo/selectUserInfo';
 
-export const ProfileItem: React.FC<ProfileItemProps> = (props) => {
-  const { firstName, lastName } = props;
+export const ProfileItem: React.FC = () => {
+  const userInfo = useAppSelector(selectUserInfo);
+  const { firstName, lastName } = userInfo;
 
   return (
     <Box display="flex" alignItems="center">

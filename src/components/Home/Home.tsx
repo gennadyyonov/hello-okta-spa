@@ -1,37 +1,42 @@
 import { Alert, Box } from '@mui/material';
 import Button from '@mui/material/Button';
-import React, { useEffect } from 'react';
-import { useAppDispatch } from '../../App/hooks';
-import { helloThunk } from '../../features/message/messageSlice';
+import React, { useCallback, useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../App/hooks';
+import { helloThunk, pingThunk } from '../../features/message/messageSlice';
 import { AuthType } from '../../graphql/queries/hello';
-import { i18n } from '../../i18n/i18n';
-import { Logout } from '../Logout/Logout';
-import { HomeProps } from './HomeConnected';
+import { LogoutButton } from '../Button/LogoutButton';
+import { selectMessage } from '../../features/message/selectMessage';
+import { useI18n } from '../../features/i18n/useI18n';
 
-const Home: React.FC<HomeProps> = (props) => {
+export const Home: React.FC = () => {
   const dispatch = useAppDispatch();
+  const message = useAppSelector(selectMessage);
+  const { i18n } = useI18n();
+
   useEffect(() => {
     dispatch(helloThunk(AuthType.USER));
   }, [dispatch]);
-  const { message, onPing } = props;
+
+  const onPing = useCallback(() => {
+    dispatch(pingThunk());
+  }, [dispatch]);
+
   return (
     <Box>
-      <Box pt={4}>
-        <Alert severity="info">{message}</Alert>
+      <Box>
+        <Alert severity="info">{message.text}</Alert>
       </Box>
       <Box pt={2}>
         <Button variant="contained" color="primary" onClick={onPing}>
           {i18n('home_button_ping')}
         </Button>
       </Box>
-      <Box pt={4}>
+      <Box pt={2}>
         <Alert severity="warning">{i18n('logout_hint')}</Alert>
       </Box>
       <Box pt={2}>
-        <Logout />
+        <LogoutButton />
       </Box>
     </Box>
   );
 };
-
-export default Home;

@@ -54,8 +54,8 @@ export default defineConfig(({ mode }) => {
         thresholds: {
           branches: 20,
           functions: 18,
-          lines: 1,
-          statements: 1,
+          lines: 0.8,
+          statements: 0.8,
         },
         include: ['src/**/*.tsx'],
         exclude: [

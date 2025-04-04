@@ -1,62 +1,23 @@
-import { CircularProgress } from '@mui/material';
-import { toRelativeUrl } from '@okta/okta-auth-js';
+import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
 import { LoginCallback, Security } from '@okta/okta-react';
-import React, { Suspense, lazy } from 'react';
+import React, { lazy } from 'react';
 import { Route, Routes, useNavigate } from 'react-router';
-import { AppHeader } from '../components/AppHeader/AppHeader';
-import { initCsrfInfo } from '../csrf/initCsrfInfo';
-import { environmentConfig } from '../helpers/environmentConfig';
-import { initTranslations } from '../helpers/initTranslations';
-import AppWrapper from './AppWrapper';
-import { RequiredAuth } from './RequiredAuth';
+import { AppLayout } from '../components/AppLayout/AppLayout';
+import { withTranslations } from '../features/i18n/withTranslations';
+import { withAuth } from './withAuth';
+import AuthService from '../services/AuthService';
+import { ErrorPage } from '../components/Error/ErrorPage';
 
-const LazyHomeConnected = lazy(() =>
-  import('../components/Home/HomeConnected').then(({ HomeConnected }) => ({ default: HomeConnected })),
-);
+const LazyHome = lazy(() => import('../components/Home/Home').then(({ Home }) => ({ default: Home })));
 
-interface TranslationState {
-  initialized: boolean;
-}
+export const ProtectedLayout = withAuth(AppLayout);
 
-const withTranslations = (Component) =>
-  class extends React.PureComponent<unknown, TranslationState> {
-    state: TranslationState = {
-      initialized: false,
-    };
-
-    async componentDidMount() {
-      await initCsrfInfo();
-      await initTranslations();
-      this.setState({ initialized: true });
-    }
-
-    render() {
-      const { initialized } = this.state;
-      if (!initialized) {
-        return <CircularProgress />;
-      }
-      const { ...props } = this.props;
-      return (
-        <>
-          <AppWrapper>
-            <AppHeader />
-            <Suspense fallback={<CircularProgress />}>
-              <Component {...props} />
-            </Suspense>
-          </AppWrapper>
-        </>
-      );
-    }
-  };
-
-const Home = withTranslations(LazyHomeConnected);
-
-export const AppRoutes: React.FC = () => {
+const AppRoutesComponent: React.FC = () => {
   const navigate = useNavigate();
-  const restoreOriginalUri = async (_oktaAuth, originalUri) => {
+  const restoreOriginalUri = async (_: OktaAuth, originalUri: string) => {
     navigate(toRelativeUrl(originalUri, window.location.origin));
   };
-  const { oktaAuth } = environmentConfig;
+  const oktaAuth = AuthService.getOktaAuth();
   if (!oktaAuth) {
     return null;
   }
@@ -64,10 +25,15 @@ export const AppRoutes: React.FC = () => {
     <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
       <Routes>
         <Route path="/implicit/callback" element={<LoginCallback />} />
-        <Route path="/" element={<RequiredAuth />}>
-          <Route path="" element={<Home />} />
+        <Route path="/" element={<ProtectedLayout />}>
+          <Route path="" element={<LazyHome />} />
+        </Route>
+        <Route path="/error" element={<AppLayout />}>
+          <Route path="401" element={<ErrorPage id="HO.ER.UNAUTHORIZED" />} />
         </Route>
       </Routes>
     </Security>
   );
 };
+
+export const AppRoutes = withTranslations(AppRoutesComponent);
