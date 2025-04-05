@@ -3,10 +3,21 @@ import browserslistToEsbuild from 'browserslist-to-esbuild';
 import { defineConfig, loadEnv } from 'vite';
 import eslintPlugin from 'vite-plugin-eslint';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
+import proxyConfig from './proxy-config';
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(({ command, mode }) => {
   // Load app-level env vars to node-level env vars.
   const env = loadEnv(mode, process.cwd(), '');
+
+  const backendBaseUrl = env.VITE_BACKEND_BASE_URL;
+  const backendCorporateProxy = env.VITE_BACKEND_CORPORATE_PROXY;
+
+  console.info(`"${command}" command is about to be executed in "${mode}" mode...`);
+
+  if (command === 'serve') {
+    console.info(`DEV Server Config:
+- Backend Base URL=[${backendBaseUrl}], Corporate Proxy=[${backendCorporateProxy}].`);
+  }
 
   return {
     // depending on your application, base can also be '/'
@@ -30,13 +41,7 @@ export default defineConfig(({ mode }) => {
       open: true,
       // this sets a default port to 3000
       port: 3000,
-      proxy: {
-        '/bff': {
-          target: env.BASE_URL,
-          changeOrigin: true,
-          secure: false,
-        },
-      },
+      proxy: proxyConfig({ backendBaseUrl, backendCorporateProxy }),
     },
     build: {
       // --> ["chrome79", "edge92", "firefox91", "safari13.1"]

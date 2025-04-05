@@ -63,9 +63,9 @@ In the project directory, you can run the following npm scripts:
 * Copy [`.env.development.sample`](.env.development.sample) to `.env.development`
 * Fill in your configuration properties instead of `???`
     
-    `BASE_URL` variable examples:
-    * Localhost `BASE_URL=http://localhost:8060/`
-    * K8s `BASE_URL=https://kubernetes.docker.internal/`
+    `VITE_BACKEND_BASE_URL` variable examples:
+    * Localhost `VITE_BACKEND_BASE_URL=http://localhost:8060/`
+    * K8s `VITE_BACKEND_BASE_URL=https://kubernetes.docker.internal/`
 * Run `npm start`
 
 ## Docker
