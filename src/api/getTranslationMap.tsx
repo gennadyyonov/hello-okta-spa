@@ -1,7 +1,6 @@
-import { Config } from '../helpers/config';
 import CsrfService from '../services/CsrfService';
 
-export const translationMapUrl = Config.baseUrl + '/bff/translationmap';
+export const translationMapUrl = '/bff/translationmap';
 
 export interface TranslationsMapEntries {
   key: string;
