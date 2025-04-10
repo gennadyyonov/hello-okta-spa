@@ -1,0 +1,37 @@
+{
+  "locale": "en",
+  "entries": [
+    {
+      "key": "home_button_ping",
+      "value": "Ping"
+    },
+    {
+      "key": "logout_hint",
+      "value": "Pressing 'Logout' button will sign current user out"
+    },
+    {
+      "key": "button_logout",
+      "value": "Logout"
+    },
+    {
+      "key": "button_go_home",
+      "value": "Go Home"
+    },
+    {
+      "key": "HO.ER.ACCESSDENIED",
+      "value": "You don't have access rights to application."
+    },
+    {
+      "key": "HO.ER.EXTERNALSYSTEM",
+      "value": "There was an issue communicating with an external service. Please try again later."
+    },
+    {
+      "key": "HO.ER.UNAUTHORIZED.TITLE",
+      "value": "Unauthorized Access"
+    },
+    {
+      "key": "HO.ER.UNAUTHORIZED.TEXT",
+      "value": "You are not authenticated or your session has expired. Please log in again to continue."
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
+import OktaAuth, { toRelativeUrl } from '@okta/okta-auth-js';
 import { LoginCallback, Security } from '@okta/okta-react';
 import React, { lazy } from 'react';
 import { Route, Routes, useNavigate } from 'react-router';
