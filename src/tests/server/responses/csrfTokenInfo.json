@@ -1,0 +1,4 @@
+{
+  "cookieName": "XSRF-TOKEN",
+  "headerName": "X-XSRF-TOKEN"
+}

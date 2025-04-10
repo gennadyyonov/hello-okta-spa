@@ -57,10 +57,10 @@ export default defineConfig(({ command, mode }) => {
       coverage: {
         enabled: false,
         thresholds: {
-          branches: 20,
-          functions: 18,
-          lines: 0.8,
-          statements: 0.8,
+          branches: 80,
+          functions: 73,
+          lines: 78,
+          statements: 78,
         },
         include: ['src/**/*.tsx'],
         exclude: [

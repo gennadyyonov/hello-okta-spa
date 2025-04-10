@@ -1,0 +1,12 @@
+{
+  "data": {
+    "me": {
+      "userId": "MOON.CHILD@GMAIL.TEST",
+      "firstName": "Moon",
+      "lastName": "Child",
+      "email": "moon.child@gmail.test",
+      "roles": ["HelloOkta_StandardUser", "SCOPE_offline_access", "SCOPE_openid", "SCOPE_email", "SCOPE_profile"],
+      "__typename": "UserInfo"
+    }
+  }
+}

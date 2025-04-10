@@ -1,0 +1,5 @@
+{
+  "oktaClientId": "oa12345abcdEFGHIJKL",
+  "oktaIssuer": "https://example.okta.com/oauth2/auso57890efghIJKLMNO",
+  "csrfEnabled": true
+}
