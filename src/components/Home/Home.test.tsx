@@ -4,6 +4,11 @@ import { Home } from './Home';
 import { testInitialState } from '../../tests';
 import { userEvent } from '@testing-library/user-event';
 import { expectHome } from '../../tests/testUtils';
+import {
+  clearWindowMatchMedia,
+  defineDesktopSizeWindowMatchMedia,
+  defineMobileSizeWindowMatchMedia,
+} from '../../tests/mediaQueryTools';
 
 describe('Home', () => {
   const prepareState = () => ({
@@ -18,7 +23,21 @@ describe('Home', () => {
     },
   });
 
-  it('should render', async () => {
+  afterEach(() => {
+    clearWindowMatchMedia();
+  });
+
+  it('should render on desktop', async () => {
+    defineDesktopSizeWindowMatchMedia();
+
+    renderWithContext(<Home />, { preloadedState: prepareState() });
+
+    await expectHome();
+  });
+
+  it('should render on mobile', async () => {
+    defineMobileSizeWindowMatchMedia();
+
     renderWithContext(<Home />, { preloadedState: prepareState() });
 
     await expectHome();

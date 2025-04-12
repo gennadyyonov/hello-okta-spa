@@ -1,4 +1,4 @@
-import { Alert, Box } from '@mui/material';
+import { Box } from '@mui/material';
 import Button from '@mui/material/Button';
 import React, { useCallback, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../App/hooks';
@@ -7,6 +7,7 @@ import { AuthType } from '../../graphql/queries/hello';
 import { LogoutButton } from '../Button/LogoutButton';
 import { selectMessage } from '../../features/message/selectMessage';
 import { useI18n } from '../../features/i18n/useI18n';
+import { AlertMessage } from '../common/AlertMessage';
 
 export const Home: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -23,20 +24,12 @@ export const Home: React.FC = () => {
 
   return (
     <Box>
-      <Box>
-        <Alert severity="info">{message.text}</Alert>
-      </Box>
-      <Box pt={2}>
-        <Button variant="contained" color="primary" onClick={onPing}>
-          {i18n('home_button_ping')}
-        </Button>
-      </Box>
-      <Box pt={2}>
-        <Alert severity="warning">{i18n('logout_hint')}</Alert>
-      </Box>
-      <Box pt={2}>
-        <LogoutButton />
-      </Box>
+      <AlertMessage
+        severity="info"
+        text={message.text}
+        action={<Button onClick={onPing}>{i18n('home_button_ping')}</Button>}
+      />
+      <AlertMessage severity="warning" text={i18n('logout_hint')} action={<LogoutButton />} sx={{ mt: 2 }} />
     </Box>
   );
 };

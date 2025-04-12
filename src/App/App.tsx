@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router';
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from './theme';
 import { AppRoutes } from './AppRoutes';
+import { AppSpinner } from '../components/AppLayout/AppSpinner';
 import { store } from './store';
-import { CircularProgress } from '@mui/material';
 import AuthService from '../services/AuthService';
 import CsrfService from '../services/CsrfService';
 
@@ -23,14 +26,17 @@ export const App: React.FC = () => {
   }, []);
 
   if (!isAppReady) {
-    return <CircularProgress />;
+    return <AppSpinner />;
   }
 
   return (
-    <Provider store={store}>
-      <Router>
-        <AppRoutes />
-      </Router>
-    </Provider>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Provider store={store}>
+        <Router>
+          <AppRoutes />
+        </Router>
+      </Provider>
+    </ThemeProvider>
   );
 };

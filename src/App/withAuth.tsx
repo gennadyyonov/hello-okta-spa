@@ -2,8 +2,8 @@ import { useOktaAuth } from '@okta/okta-react';
 import React, { Suspense, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { TokenManagerError } from '@okta/okta-auth-js';
-import { CircularProgress } from '@mui/material';
 import AuthService from '../services/AuthService';
+import { AppSpinner } from '../components/AppLayout/AppSpinner';
 
 export const withAuth = (WrappedComponent: React.ComponentType) => {
   const ComponentWithAuth = () => {
@@ -52,11 +52,11 @@ export const withAuth = (WrappedComponent: React.ComponentType) => {
     }, [oktaAuth, logout, navigate]);
 
     if (!authState || !authState?.isAuthenticated) {
-      return <CircularProgress />;
+      return <AppSpinner />;
     }
 
     return (
-      <Suspense fallback={<CircularProgress />}>
+      <Suspense fallback={<AppSpinner />}>
         <WrappedComponent />
       </Suspense>
     );

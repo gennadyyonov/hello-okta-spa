@@ -47,6 +47,7 @@ export default tseslint.config(
             'expect',
             'expectAppHeader',
             'expectHome',
+            'expectUnauthorizedErrorPage',
           ],
         },
       ],
