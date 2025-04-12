@@ -3,7 +3,7 @@ import React, { Suspense, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../App/hooks';
 import { getTranslationMapThunk } from './i18nSlice';
 import { selectTranslationsInitialized } from './selectTranslationsInitialized';
-import { CircularProgress } from '@mui/material';
+import { AppSpinner } from '../../components/AppLayout/AppSpinner';
 
 export const withTranslations = (WrappedComponent: React.ComponentType) => {
   const ComponentWithTranslations = () => {
@@ -17,11 +17,11 @@ export const withTranslations = (WrappedComponent: React.ComponentType) => {
     }, [dispatch, translationsInitialized]);
 
     if (!translationsInitialized) {
-      return <CircularProgress />;
+      return <AppSpinner />;
     }
 
     return (
-      <Suspense fallback={<CircularProgress />}>
+      <Suspense fallback={<AppSpinner />}>
         <WrappedComponent />
       </Suspense>
     );

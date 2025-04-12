@@ -8,9 +8,11 @@ export const AppLayout: React.FC = () => {
   const { authState } = useOktaAuth();
 
   return (
-    <AppWrapper>
+    <>
       {authState && authState.isAuthenticated && <AppHeader />}
-      <Outlet />
-    </AppWrapper>
+      <AppWrapper>
+        <Outlet />
+      </AppWrapper>
+    </>
   );
 };

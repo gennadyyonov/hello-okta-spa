@@ -1,18 +1,24 @@
-import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
 import React, { ReactNode } from 'react';
+import { AppContainer } from './AppContainer';
 
 const AppWrapper: React.FC<{ children?: ReactNode }> = ({ children }) => (
-  <Paper
-    sx={{
-      margin: '20px',
-      padding: '20px',
-      width: 400,
-      height: 400,
-    }}
-    elevation={3}
-  >
-    {children}
-  </Paper>
+  <AppContainer breakpoints={{ width: 'sm' }}>
+    <Box
+      sx={{
+        mt: 2,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '100%',
+        '& > *': {
+          width: '100%',
+        },
+      }}
+    >
+      {children}
+    </Box>
+  </AppContainer>
 );
 
 export default AppWrapper;

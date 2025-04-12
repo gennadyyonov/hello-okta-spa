@@ -10,3 +10,11 @@ export const expectHome = async () => {
 export const expectAppHeader = async () => {
   expect(await screen.findByText('Moon Child')).toBeInTheDocument();
 };
+
+export const expectUnauthorizedErrorPage = async () => {
+  expect(await screen.findByText('Unauthorized Access')).toBeInTheDocument();
+  expect(
+    await screen.findByText('You are not authenticated or your session has expired. Please log in again to continue.'),
+  ).toBeInTheDocument();
+  expect(await screen.findByRole('button', { name: 'Go Home' })).toBeInTheDocument();
+};
