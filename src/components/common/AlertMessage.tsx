@@ -1,10 +1,10 @@
-import React, { cloneElement, isValidElement, useMemo } from 'react';
 import Alert, { AlertProps } from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Box from '@mui/material/Box';
 import { ButtonProps } from '@mui/material/Button';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import React, { cloneElement, isValidElement, useMemo } from 'react';
 
 interface AlertMessageProps {
   severity: AlertProps['severity'];

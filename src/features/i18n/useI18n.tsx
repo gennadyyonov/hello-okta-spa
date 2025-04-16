@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
 
 import { useAppSelector } from '../../App/hooks';
-import { translate } from './translate';
 import { selectTranslationEntries } from './selectTranslationEntries';
+import { translate } from './translate';
 
 export const useI18n = () => {
   const translationEntries = useAppSelector(selectTranslationEntries);

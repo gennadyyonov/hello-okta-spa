@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { useI18n } from '../../features/i18n/useI18n';
 import { GoHomeButton } from '../Button/GoHomeButton';
 import { AlertMessage } from '../common/AlertMessage';

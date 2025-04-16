@@ -1,8 +1,8 @@
-import { renderWithContext } from '../../tests/renderWithContext';
-import { AppHeader } from './AppHeader';
-import { testInitialState } from '../../tests';
 import { RootState } from '../../App/store';
+import { testInitialState } from '../../tests';
+import { renderWithContext } from '../../tests/renderWithContext';
 import { expectAppHeader } from '../../tests/testUtils';
+import { AppHeader } from './AppHeader';
 
 describe('AppHeader', () => {
   it('should render', async () => {

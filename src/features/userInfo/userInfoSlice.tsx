@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { UserInfoState, initialUserInfoState } from '.';
+
 import { client } from '../../graphql/Client';
 import { me } from '../../graphql/queries/me';
+import { initialUserInfoState, UserInfoState } from '.';
 
 export const meThunk = createAsyncThunk<UserInfoState, void>('userInfo/me', async () => {
   const { data } = await client.query({ query: me });

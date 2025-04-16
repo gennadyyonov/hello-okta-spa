@@ -1,5 +1,5 @@
-import { parseTranslations } from './parseTranslations';
 import { TranslationsMapEntries } from '../api/getTranslationMap';
+import { parseTranslations } from './parseTranslations';
 
 describe('parseTranslations', () => {
   it('should return translations', () => {

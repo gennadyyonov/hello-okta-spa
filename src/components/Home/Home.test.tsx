@@ -1,14 +1,15 @@
 import { screen } from '@testing-library/react';
-import { renderWithContext } from '../../tests/renderWithContext';
-import { Home } from './Home';
-import { testInitialState } from '../../tests';
 import { userEvent } from '@testing-library/user-event';
-import { expectHome } from '../../tests/testUtils';
+
+import { testInitialState } from '../../tests';
 import {
   clearWindowMatchMedia,
   defineDesktopSizeWindowMatchMedia,
   defineMobileSizeWindowMatchMedia,
 } from '../../tests/mediaQueryTools';
+import { renderWithContext } from '../../tests/renderWithContext';
+import { expectHome } from '../../tests/testUtils';
+import { Home } from './Home';
 
 describe('Home', () => {
   const prepareState = () => ({

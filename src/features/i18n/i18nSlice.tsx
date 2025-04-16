@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { initialState } from '.';
-import { parseTranslations } from '../../helpers/parseTranslations';
+
 import { getTranslationMap, TranslationsMap } from '../../api/getTranslationMap';
+import { parseTranslations } from '../../helpers/parseTranslations';
+import { initialState } from '.';
 
 export const getTranslationMapThunk = createAsyncThunk<TranslationsMap, void>(
   'i18n/translationmap',

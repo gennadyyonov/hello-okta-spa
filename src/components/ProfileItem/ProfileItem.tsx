@@ -1,8 +1,9 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { Box } from '@mui/material';
+import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import React from 'react';
+
 import { useAppSelector } from '../../App/hooks';
 import { selectUserInfo } from '../../features/userInfo/selectUserInfo';
 

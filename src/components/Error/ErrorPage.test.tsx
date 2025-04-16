@@ -1,14 +1,16 @@
 import '../../tests/oktaMock';
-import { renderWithContext } from '../../tests/renderWithContext';
-import { ErrorPage } from './ErrorPage';
-import { expectUnauthorizedErrorPage } from '../../tests/testUtils';
+
+import React from 'react';
+
+import { testInitialState } from '../../tests';
 import {
   clearWindowMatchMedia,
   defineDesktopSizeWindowMatchMedia,
   defineMobileSizeWindowMatchMedia,
 } from '../../tests/mediaQueryTools';
-import React from 'react';
-import { testInitialState } from '../../tests';
+import { renderWithContext } from '../../tests/renderWithContext';
+import { expectUnauthorizedErrorPage } from '../../tests/testUtils';
+import { ErrorPage } from './ErrorPage';
 
 describe('ErrorPage', () => {
   const prepareState = () => ({

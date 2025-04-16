@@ -1,4 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
+
 import i18n from '../features/i18n/i18nSlice';
 import message from '../features/message/messageSlice';
 import userInfo from '../features/userInfo/userInfoSlice';

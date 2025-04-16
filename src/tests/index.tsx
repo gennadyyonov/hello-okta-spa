@@ -1,10 +1,10 @@
 import { RenderOptions } from '@testing-library/react';
+import * as H from 'history';
 
 import { AppStore, RootState } from '../App/store';
 import { initialState as i18nInitialState } from '../features/i18n';
 import { initialMessageState } from '../features/message';
 import { initialUserInfoState } from '../features/userInfo';
-import * as H from 'history';
 
 export const testInitialState: RootState = {
   i18n: i18nInitialState,

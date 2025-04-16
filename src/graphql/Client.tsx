@@ -1,5 +1,6 @@
 import { ApolloClient, createHttpLink, from, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+
 import { prepareHeaders } from '../helpers/prepareHeaders';
 
 const backendGQLUri = '/bff/graphql';

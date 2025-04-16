@@ -2,11 +2,12 @@ import OktaAuth, { toRelativeUrl } from '@okta/okta-auth-js';
 import { LoginCallback, Security } from '@okta/okta-react';
 import React, { lazy } from 'react';
 import { Route, Routes, useNavigate } from 'react-router';
+
 import { AppLayout } from '../components/AppLayout/AppLayout';
-import { withTranslations } from '../features/i18n/withTranslations';
-import { withAuth } from './withAuth';
-import AuthService from '../services/AuthService';
 import { ErrorPage } from '../components/Error/ErrorPage';
+import { withTranslations } from '../features/i18n/withTranslations';
+import AuthService from '../services/AuthService';
+import { withAuth } from './withAuth';
 
 const LazyHome = lazy(() => import('../components/Home/Home').then(({ Home }) => ({ default: Home })));
 
