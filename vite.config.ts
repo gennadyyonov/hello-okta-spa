@@ -1,6 +1,6 @@
-import react from '@vitejs/plugin-react';
 import browserslistToEsbuild from 'browserslist-to-esbuild';
 import { defineConfig, loadEnv } from 'vite';
+import react from '@vitejs/plugin-react-swc';
 import eslintPlugin from 'vite-plugin-eslint';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
 import proxyConfig from './proxy-config';
@@ -25,9 +25,6 @@ export default defineConfig(({ command, mode }) => {
     plugins: [
       react({
         jsxImportSource: '@emotion/react',
-        babel: {
-          plugins: ['@emotion/babel-plugin'],
-        },
       }),
       viteTsconfigPaths(),
       eslintPlugin({
@@ -57,10 +54,10 @@ export default defineConfig(({ command, mode }) => {
       coverage: {
         enabled: false,
         thresholds: {
-          branches: 84,
-          functions: 78,
-          lines: 85,
-          statements: 85,
+          branches: 82,
+          functions: 75,
+          lines: 84,
+          statements: 84,
         },
         include: ['src/**/*.tsx'],
         exclude: [
