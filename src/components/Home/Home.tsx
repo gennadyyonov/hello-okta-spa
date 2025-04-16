@@ -1,12 +1,13 @@
-import { Box } from '@mui/material';
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import React, { useCallback, useEffect } from 'react';
+
 import { useAppDispatch, useAppSelector } from '../../App/hooks';
+import { useI18n } from '../../features/i18n/useI18n';
 import { helloThunk, pingThunk } from '../../features/message/messageSlice';
+import { selectMessage } from '../../features/message/selectMessage';
 import { AuthType } from '../../graphql/queries/hello';
 import { LogoutButton } from '../Button/LogoutButton';
-import { selectMessage } from '../../features/message/selectMessage';
-import { useI18n } from '../../features/i18n/useI18n';
 import { AlertMessage } from '../common/AlertMessage';
 
 export const Home: React.FC = () => {

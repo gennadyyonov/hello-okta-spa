@@ -1,6 +1,6 @@
 import Container, { ContainerProps } from '@mui/material/Container';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { Breakpoint } from '@mui/system/createTheme';
 import React from 'react';
 

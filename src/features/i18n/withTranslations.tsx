@@ -1,9 +1,9 @@
 import React, { Suspense, useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../App/hooks';
+import { AppSpinner } from '../../components/AppLayout/AppSpinner';
 import { getTranslationMapThunk } from './i18nSlice';
 import { selectTranslationsInitialized } from './selectTranslationsInitialized';
-import { AppSpinner } from '../../components/AppLayout/AppSpinner';
 
 export const withTranslations = (WrappedComponent: React.ComponentType) => {
   const ComponentWithTranslations = () => {

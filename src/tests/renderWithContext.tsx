@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 import React, { PropsWithChildren } from 'react';
 import { Provider } from 'react-redux';
+import { MemoryRouter } from 'react-router';
 
 import { setupStore } from '../App/store';
 import { ExtendedRenderOptions } from './index';
-import { MemoryRouter } from 'react-router';
 
 export const renderWithContext = (
   ui: React.ReactElement,

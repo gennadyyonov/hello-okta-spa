@@ -1,4 +1,5 @@
 import OktaAuth from '@okta/okta-auth-js';
+
 import { fetchEnvironmentConfig } from '../api/fetchEnvironmentConfig';
 import CsrfService from './CsrfService';
 

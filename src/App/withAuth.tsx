@@ -1,9 +1,10 @@
+import { TokenManagerError } from '@okta/okta-auth-js';
 import { useOktaAuth } from '@okta/okta-react';
 import React, { Suspense, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { TokenManagerError } from '@okta/okta-auth-js';
-import AuthService from '../services/AuthService';
+
 import { AppSpinner } from '../components/AppLayout/AppSpinner';
+import AuthService from '../services/AuthService';
 
 export const withAuth = (WrappedComponent: React.ComponentType) => {
   const ComponentWithAuth = () => {

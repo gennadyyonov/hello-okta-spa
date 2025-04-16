@@ -1,13 +1,14 @@
 import '../tests/oktaMock';
-import { renderWithContext } from '../tests/renderWithContext';
+
 import { testInitialState } from '../tests';
-import { AppRoutes } from './AppRoutes';
-import { expectAppHeader, expectHome } from '../tests/testUtils';
 import {
   clearWindowMatchMedia,
   defineDesktopSizeWindowMatchMedia,
   defineMobileSizeWindowMatchMedia,
 } from '../tests/mediaQueryTools';
+import { renderWithContext } from '../tests/renderWithContext';
+import { expectAppHeader, expectHome } from '../tests/testUtils';
+import { AppRoutes } from './AppRoutes';
 
 describe('AppRoutes', () => {
   afterEach(() => {

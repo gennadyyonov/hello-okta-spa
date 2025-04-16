@@ -1,5 +1,6 @@
 import Box from '@mui/material/Box';
 import React, { ReactNode } from 'react';
+
 import { AppContainer } from './AppContainer';
 
 const AppWrapper: React.FC<{ children?: ReactNode }> = ({ children }) => (

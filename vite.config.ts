@@ -1,8 +1,9 @@
+import react from '@vitejs/plugin-react-swc';
 import browserslistToEsbuild from 'browserslist-to-esbuild';
 import { defineConfig, loadEnv } from 'vite';
-import react from '@vitejs/plugin-react-swc';
 import eslintPlugin from 'vite-plugin-eslint';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
+
 import proxyConfig from './proxy-config';
 
 export default defineConfig(({ command, mode }) => {

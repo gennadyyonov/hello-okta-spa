@@ -1,5 +1,6 @@
-import { fetchCsrfInfo } from '../api/fetchCsrfInfo';
 import Cookies from 'js-cookie';
+
+import { fetchCsrfInfo } from '../api/fetchCsrfInfo';
 
 interface CsrfInfo {
   cookieName: string | null;

@@ -1,7 +1,8 @@
 import Button, { ButtonProps } from '@mui/material/Button';
 import React, { useCallback } from 'react';
-import { useI18n } from '../../features/i18n/useI18n';
 import { useNavigate } from 'react-router';
+
+import { useI18n } from '../../features/i18n/useI18n';
 
 export const GoHomeButton: React.FC<ButtonProps> = (props) => {
   const { i18n } = useI18n();

@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { MessageState, PingState, initialMessageState } from '.';
+
 import { client } from '../../graphql/Client';
 import { AuthType, hello } from '../../graphql/queries/hello';
 import { ping } from '../../graphql/queries/ping';
+import { initialMessageState, MessageState, PingState } from '.';
 
 export const helloThunk = createAsyncThunk<MessageState, AuthType>('message/hello', async (authType) => {
   const { data } = await client.query({
