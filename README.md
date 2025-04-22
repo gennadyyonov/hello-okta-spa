@@ -1,6 +1,7 @@
 # Okta-Hosted Login Page Demo SPA
 
 [![Node.js CI](https://github.com/gennadyyonov/hello-okta-spa/actions/workflows/node.js.yml/badge.svg)](https://github.com/gennadyyonov/hello-okta-spa/actions/workflows/node.js.yml)
+[![codecov](https://codecov.io/gh/gennadyyonov/hello-okta-spa/graph/badge.svg)](https://codecov.io/gh/gennadyyonov/hello-okta-spa)
 
 This demo basically shows how to use the [Okta React](https://github.com/okta/okta-oidc-js/tree/master/packages/okta-react) Library to login User to React application. 
 
