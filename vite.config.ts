@@ -54,6 +54,7 @@ export default defineConfig(({ command, mode }) => {
       mockReset: true,
       coverage: {
         enabled: false,
+        reporter: ['lcov', 'text', 'html', 'clover', 'json'],
         thresholds: {
           branches: 82,
           functions: 75,
