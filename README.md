@@ -1,5 +1,7 @@
 # Okta-Hosted Login Page Demo SPA
 
+[![Node.js CI](https://github.com/gennadyyonov/hello-okta-spa/actions/workflows/node.js.yml/badge.svg)](https://github.com/gennadyyonov/hello-okta-spa/actions/workflows/node.js.yml)
+
 This demo basically shows how to use the [Okta React](https://github.com/okta/okta-oidc-js/tree/master/packages/okta-react) Library to login User to React application. 
 
 The login is achieved through the [Authorization Code Flow with PKCE](https://developer.okta.com/docs/guides/implement-auth-code-pkce/overview/), where the User is redirected to the Okta-Hosted Login Page. 
