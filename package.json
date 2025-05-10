@@ -68,7 +68,7 @@
     "eslint-plugin-react-refresh": "0.4.20",
     "eslint-plugin-simple-import-sort": "12.1.1",
     "globals": "16.1.0",
-    "happy-dom": "17.4.6",
+    "happy-dom": "17.4.7",
     "https-proxy-agent": "7.0.6",
     "msw": "2.8.2",
     "prettier": "3.5.3",
