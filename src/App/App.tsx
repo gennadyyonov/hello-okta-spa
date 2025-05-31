@@ -5,18 +5,22 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router';
 
 import { AppSpinner } from '../components/AppLayout/AppSpinner';
-import AuthService from '../services/AuthService';
+import AuthService, { OktaAuthOptions } from '../services/AuthService';
 import CsrfService from '../services/CsrfService';
 import { AppRoutes } from './AppRoutes';
 import { store } from './store';
 import { theme } from './theme';
 
-export const App: React.FC = () => {
+export interface AppProps {
+  okta?: OktaAuthOptions;
+}
+
+export const App: React.FC<AppProps> = ({ okta }) => {
   const [isAppReady, setIsAppReady] = useState(false);
 
   useEffect(() => {
     const initializeApp = async () => {
-      await AuthService.initialize();
+      await AuthService.initialize(okta);
       await CsrfService.initialize();
       if (AuthService.isInitialized() && CsrfService.isInitialized()) {
         setIsAppReady(true);
@@ -24,7 +28,7 @@ export const App: React.FC = () => {
     };
 
     initializeApp().catch((error) => console.error('Failed to initialize application:', error));
-  }, []);
+  }, [okta]);
 
   if (!isAppReady) {
     return <AppSpinner />;
