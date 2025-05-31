@@ -1,11 +1,20 @@
-import OktaAuth from '@okta/okta-auth-js';
+import OktaAuth, { StorageType } from '@okta/okta-auth-js';
 
 import { fetchEnvironmentConfig } from '../api/fetchEnvironmentConfig';
 import CsrfService from './CsrfService';
 
+export interface OktaAuthOptions {
+  storageType: StorageType;
+}
+
 export interface AccessToken {
   tokenType: string;
   accessToken: string;
+}
+
+export interface LoginOptions {
+  originalUri: string;
+  setOriginalUri(uri: string): void;
 }
 
 class AuthService {
@@ -23,7 +32,7 @@ class AuthService {
     return AuthService.instance;
   }
 
-  async initialize() {
+  async initialize(options?: OktaAuthOptions) {
     if (this.initialized) {
       return;
     }
@@ -40,7 +49,7 @@ class AuthService {
         tokenManager: {
           autoRenew: true,
           autoRemove: true,
-          storage: 'sessionStorage',
+          storage: options?.storageType ?? 'sessionStorage',
         },
       });
       CsrfService.setCsrfEnabled(csrfEnabled);
@@ -66,18 +75,22 @@ class AuthService {
     return accessToken ? { tokenType: 'Bearer', accessToken: accessToken } : null;
   }
 
-  async login() {
+  async login(options: LoginOptions) {
     if (!this.oktaAuth) {
       return;
     }
-    await this.oktaAuth.signInWithRedirect();
+    const { originalUri, setOriginalUri } = options;
+    setOriginalUri(originalUri);
+    await this.oktaAuth.signInWithRedirect({ originalUri });
   }
 
   async logout() {
     if (!this.oktaAuth) {
       return;
     }
-    await this.oktaAuth.signOut({ postLogoutRedirectUri: window.location.origin + '/' });
+    const postLogoutRedirectUri = window.location.origin + '/';
+    console.debug(`[AuthService] Logging out: ${postLogoutRedirectUri}`);
+    await this.oktaAuth.signOut({ postLogoutRedirectUri });
   }
 
   getOktaAuth(): OktaAuth | undefined {

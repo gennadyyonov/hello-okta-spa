@@ -1,6 +1,7 @@
 import OktaAuth, { AuthState } from '@okta/okta-auth-js';
 import { AuthStateManagerInterface } from '@okta/okta-auth-js/types/lib/core/types/AuthState';
 import { TokenManagerInterface } from '@okta/okta-auth-js/types/lib/oidc/types/TokenManager';
+import React from 'react';
 
 const authState: AuthState = {
   isAuthenticated: true,
@@ -48,5 +49,6 @@ vi.mock('@okta/okta-react', async () => {
   return {
     ...actual,
     useOktaAuth: vi.fn(() => ({ authState, oktaAuth })),
+    LoginCallback: () => <div>LoginCallback Component</div>,
   };
 });
