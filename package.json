@@ -70,7 +70,7 @@
     "globals": "16.2.0",
     "happy-dom": "17.6.3",
     "https-proxy-agent": "7.0.6",
-    "msw": "2.9.0",
+    "msw": "2.10.1",
     "prettier": "3.5.3",
     "typescript": "5.8.3",
     "typescript-eslint": "8.33.1",
