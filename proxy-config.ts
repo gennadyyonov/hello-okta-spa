@@ -1,4 +1,5 @@
 import http from 'node:http';
+import net from 'node:net';
 
 import { HttpsProxyAgent } from 'https-proxy-agent';
 import { CommonServerOptions, HttpProxy } from 'vite';
@@ -8,9 +9,15 @@ interface ProxyConfigOptions {
   backendCorporateProxy?: string;
 }
 
-const errorHandler: HttpProxy.ErrorCallback = (err: Error, _: http.IncomingMessage, res: http.ServerResponse): void => {
+const errorHandler: HttpProxy.ErrorCallback = (
+  err: Error,
+  _: http.IncomingMessage,
+  res: http.ServerResponse | net.Socket,
+): void => {
   console.error('Proxy error handled:\n', err);
-  res.writeHead(504, { 'Content-Type': 'text/plain' });
+  if (res instanceof http.ServerResponse) {
+    res.writeHead(504, { 'Content-Type': 'text/plain' });
+  }
   res.end('Service Unavailable');
 };
 
