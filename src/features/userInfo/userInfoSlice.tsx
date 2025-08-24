@@ -4,9 +4,9 @@ import { client } from '../../graphql/Client';
 import { me } from '../../graphql/queries/me';
 import { initialUserInfoState, UserInfoState } from '.';
 
-export const meThunk = createAsyncThunk<UserInfoState, void>('userInfo/me', async () => {
-  const { data } = await client.query({ query: me });
-  return data.me;
+export const meThunk = createAsyncThunk<UserInfoState | undefined, void>('userInfo/me', async () => {
+  const { data } = await client.query<{ me: UserInfoState }>({ query: me });
+  return data?.me;
 });
 
 export const userInfoSlice = createSlice({
