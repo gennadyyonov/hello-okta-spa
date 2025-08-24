@@ -1,23 +1,23 @@
-import { ApolloClient, createHttpLink, from, InMemoryCache } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+import { ApolloClient, ApolloLink, HttpLink, InMemoryCache } from '@apollo/client';
+import { SetContextLink } from '@apollo/client/link/context';
 
 import { prepareHeaders } from '../helpers/prepareHeaders';
 
 const backendGQLUri = '/bff/graphql';
 
-const httpLink = createHttpLink({
+const httpLink = new HttpLink({
   uri: backendGQLUri,
   credentials: 'same-origin',
 });
 
 const cache = new InMemoryCache();
 
-const authMiddleware = setContext((_, { headers }) => {
+const authMiddleware = new SetContextLink(({ headers }) => {
   return prepareHeaders(headers);
 });
 
 export const client = new ApolloClient({
-  link: from([authMiddleware, httpLink]),
+  link: ApolloLink.from([authMiddleware, httpLink]),
   cache,
   defaultOptions: {
     query: {
