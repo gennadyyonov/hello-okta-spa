@@ -52,7 +52,7 @@ describe('LoginCallbackHandler', () => {
     );
 
     await waitFor(() => {
-      expect(mockNavigate).toHaveBeenCalledWith('/dashboard', { replace: true });
+      expect(mockNavigate).toHaveBeenCalledExactlyOnceWith('/dashboard', { replace: true });
     });
   });
 });
