@@ -1,6 +1,6 @@
 import { TokenManagerError, toRelativeUrl } from '@okta/okta-auth-js';
 import { useOktaAuth } from '@okta/okta-react';
-import React, { Suspense, useCallback, useEffect, useState } from 'react';
+import React, { Suspense, useCallback, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router';
 
 import { AppSpinner } from '../components/AppLayout/AppSpinner';
@@ -12,7 +12,7 @@ export const withAuth = (WrappedComponent: React.ComponentType) => {
     const { authState } = useOktaAuth();
     const { setOriginalUri } = useAppContext();
     const navigate = useNavigate();
-    const [isRedirecting, setIsRedirecting] = useState(false);
+    const redirectingRef = useRef(false);
 
     const oktaAuth = AuthService.getOktaAuth();
 
@@ -21,19 +21,19 @@ export const withAuth = (WrappedComponent: React.ComponentType) => {
     };
 
     useEffect(() => {
-      if (!oktaAuth || !authState || isRedirecting) {
+      if (!oktaAuth || !authState || redirectingRef.current) {
         return;
       }
 
       if (!authState.isAuthenticated) {
-        setIsRedirecting(true);
+        redirectingRef.current = true;
         const originalUri = toRelativeUrl(window.location.href, window.location.origin);
         AuthService.login({ originalUri, setOriginalUri }).catch((err) => {
           logError('login failed', err);
           navigate('/error/401');
         });
       }
-    }, [oktaAuth, authState, setOriginalUri, navigate, isRedirecting]);
+    }, [oktaAuth, authState, setOriginalUri, navigate]);
 
     const logout = useCallback(() => AuthService.logout(), []);
 
