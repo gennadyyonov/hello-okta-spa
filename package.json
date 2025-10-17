@@ -12,7 +12,7 @@
     "@mui/material": "7.3.4",
     "@okta/okta-auth-js": "7.14.0",
     "@okta/okta-react": "6.10.0",
-    "@reduxjs/toolkit": "2.9.0",
+    "@reduxjs/toolkit": "2.9.1",
     "graphql": "16.11.0",
     "js-cookie": "3.0.5",
     "react": "19.2.0",
