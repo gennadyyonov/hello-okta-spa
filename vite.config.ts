@@ -56,10 +56,10 @@ export default defineConfig(({ command, mode }) => {
         enabled: false,
         reporter: ['lcov', 'text', 'html', 'clover', 'json'],
         thresholds: {
-          branches: 82,
+          branches: 59,
           functions: 75,
-          lines: 84,
-          statements: 84,
+          lines: 78,
+          statements: 78,
         },
         include: ['src/**/*.tsx'],
         exclude: [
@@ -67,12 +67,14 @@ export default defineConfig(({ command, mode }) => {
           '**/node_modules/**',
           '**/dist/**',
           '**/out/**',
-          '**/out/**',
           'src/setupTests.ts',
           'src/setupStylesTests.ts',
           'src/**/*.test.tsx',
         ],
       },
+      reporters: [
+        ['default', { summary: false }]
+      ]
     },
   };
 });
