@@ -4,7 +4,13 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/vitest';
 
+import { configure } from '@testing-library/react';
+
 import { mswServer } from './tests/server/mswServer';
+
+configure({
+  asyncUtilTimeout: 2000,
+});
 
 beforeAll(() => {
   // Enable API mocking before all the tests.
