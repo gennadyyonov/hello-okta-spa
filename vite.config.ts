@@ -48,6 +48,7 @@ export default defineConfig(({ command, mode }) => {
     // https://vitest.dev/config/
     test: {
       globals: true,
+      isolate: true,
       environment: 'happy-dom',
       setupFiles: ['./src/setupTests.ts', './src/setupStylesTests.ts'],
       testTimeout: 10000,
