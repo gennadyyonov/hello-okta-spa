@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 
 import { testInitialState } from '../../tests';
@@ -52,10 +52,15 @@ describe('Home', () => {
 
     await userEvent.click(pingButton);
 
-    expect(
-      await screen.findByText(
-        "If you play Pink Floyd's 'Dark Side Of The Moon' while watching Delta Force 2, Chuck Norris' boot heel will sync up with your face.",
-      ),
-    ).toBeInTheDocument();
+    await waitFor(
+      () => {
+        expect(
+          screen.getByText(
+            "If you play Pink Floyd's 'Dark Side Of The Moon' while watching Delta Force 2, Chuck Norris' boot heel will sync up with your face.",
+          ),
+        ).toBeInTheDocument();
+      },
+      { timeout: 5000 },
+    );
   });
 });

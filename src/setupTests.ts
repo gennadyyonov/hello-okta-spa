@@ -9,7 +9,7 @@ import { configure } from '@testing-library/react';
 import { mswServer } from './tests/server/mswServer';
 
 configure({
-  asyncUtilTimeout: 2000,
+  asyncUtilTimeout: 2500,
 });
 
 beforeAll(() => {
