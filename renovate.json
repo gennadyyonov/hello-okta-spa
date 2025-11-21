@@ -3,5 +3,8 @@
   "extends": [
     "config:js-app",
     "packages:eslint"
-  ]
+  ],
+  "constraints": {
+    "npm": "11"
+  }
 }
