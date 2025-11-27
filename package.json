@@ -10,7 +10,7 @@
     "@mui/icons-material": "7.3.5",
     "@mui/lab": "7.0.0-beta.17",
     "@mui/material": "7.3.5",
-    "@okta/okta-auth-js": "7.14.0",
+    "@okta/okta-auth-js": "7.14.1",
     "@okta/okta-react": "6.10.0",
     "@reduxjs/toolkit": "2.11.0",
     "graphql": "16.12.0",
