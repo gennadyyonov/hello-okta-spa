@@ -59,7 +59,7 @@
     "@types/react-router-dom": "5.3.3",
     "@vitejs/plugin-react-swc": "4.2.3",
     "@vitest/coverage-v8": "4.0.18",
-    "@vitest/eslint-plugin": "1.6.6",
+    "@vitest/eslint-plugin": "1.6.7",
     "browserslist-to-esbuild": "2.1.1",
     "css-mediaquery": "0.1.2",
     "eslint": "9.39.2",
