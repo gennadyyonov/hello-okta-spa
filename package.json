@@ -70,7 +70,7 @@
     "eslint-plugin-simple-import-sort": "12.1.1",
     "globals": "17.4.0",
     "happy-dom": "20.8.3",
-    "https-proxy-agent": "7.0.6",
+    "https-proxy-agent": "8.0.0",
     "msw": "2.12.10",
     "prettier": "3.8.1",
     "typescript": "5.9.3",
