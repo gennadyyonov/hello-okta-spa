@@ -12,7 +12,7 @@ export const ProfileItem: React.FC = () => {
   const { firstName, lastName } = userInfo;
 
   return (
-    <Box display="flex" alignItems="center">
+    <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <IconButton edge="start" color="inherit" aria-label="menu">
         <AccountCircleIcon />
       </IconButton>
