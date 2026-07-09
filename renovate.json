@@ -4,6 +4,6 @@
     "config:recommended"
   ],
   "constraints": {
-    "npm": "11"
+    "npm": "12"
   }
 }
