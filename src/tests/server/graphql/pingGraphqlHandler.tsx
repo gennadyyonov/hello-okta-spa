@@ -1,5 +1,6 @@
-import { graphql, HttpResponse } from 'msw';
+import { HttpResponse } from 'msw';
 
 import ping from '../responses/ping.json';
+import { backend } from './graphqlLink';
 
-export const pingGraphqlHandler = () => graphql.query('Ping', () => HttpResponse.json(ping));
+export const pingGraphqlHandler = () => backend.query('Ping', () => HttpResponse.json(ping));

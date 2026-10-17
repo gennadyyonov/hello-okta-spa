@@ -3,7 +3,7 @@ import { SetContextLink } from '@apollo/client/link/context';
 
 import { prepareHeaders } from '../helpers/prepareHeaders';
 
-const backendGQLUri = '/bff/graphql';
+export const backendGQLUri = '/bff/graphql';
 
 const httpLink = new HttpLink({
   uri: backendGQLUri,

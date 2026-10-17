@@ -1,7 +1,9 @@
-import { graphql, HttpResponse } from 'msw';
+import { HttpResponse } from 'msw';
+
+import { backend } from './graphqlLink';
 
 export const helloGraphqlHandler = () =>
-  graphql.query('Hello', async ({ variables }) => {
+  backend.query('Hello', async ({ variables }) => {
     const { authType } = variables;
     const body = await import(`../responses/hello-${authType}.json`);
     return HttpResponse.json(body.default);
